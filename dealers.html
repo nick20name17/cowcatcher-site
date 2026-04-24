@@ -3588,6 +3588,14 @@ main > section:nth-of-type(even) {
   margin-top: 44px;
 }
 
+.dealers-partners-grid > .dealers-partner-card:nth-child(1) {
+  grid-column: 2;
+}
+
+.dealers-partners-grid > .dealers-partner-card:nth-child(2) {
+  grid-column: 3;
+}
+
 .dealers-partner-card {
   display: flex;
   align-items: center;
@@ -3813,6 +3821,11 @@ main > section:nth-of-type(even) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .dealers-partners-grid > .dealers-partner-card:nth-child(1),
+  .dealers-partners-grid > .dealers-partner-card:nth-child(2) {
+    grid-column: auto;
+  }
+
   .dealers-partners-intro h2 {
     text-wrap: balance;
   }
@@ -3994,6 +4007,11 @@ main > section:nth-of-type(even) {
   .dealers-partners-grid {
     grid-template-columns: 1fr;
     gap: 18px;
+  }
+
+  .dealers-partners-grid > .dealers-partner-card:nth-child(1),
+  .dealers-partners-grid > .dealers-partner-card:nth-child(2) {
+    grid-column: auto;
   }
 
   .dealers-partner-card {
@@ -5530,14 +5548,6 @@ main > section:nth-of-type(even) {
 
             <div class="dealers-partner-card dealers-partner-card-weber">
               <img src="img/shared/webers-farm-service.svg" alt="Weber's Farm Service" loading="lazy" />
-            </div>
-
-            <div class="dealers-partner-card">
-              <img src="img/shared/canadian-cattle-association.svg" alt="Canadian Cattle Association" loading="lazy" />
-            </div>
-
-            <div class="dealers-partner-card">
-              <img src="img/shared/agritech-solutions.png" alt="AgriTech Solutions" loading="lazy" />
             </div>
           </div>
         </div>
