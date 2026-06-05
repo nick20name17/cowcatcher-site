@@ -10468,31 +10468,9 @@ main > section:nth-of-type(even) {
       }
 
       .card-brand.mastercard {
-        background: #252525;
-        position: relative;
-        overflow: hidden;
-      }
-
-      .card-brand.mastercard::before,
-      .card-brand.mastercard::after {
-        content: "";
-        position: absolute;
-        width: 18px;
-        height: 18px;
-        border-radius: 50%;
-        top: 50%;
-        transform: translateY(-50%);
-      }
-
-      .card-brand.mastercard::before {
-        background: #eb001b;
-        left: 6px;
-      }
-
-      .card-brand.mastercard::after {
-        background: #f79e1b;
-        right: 6px;
-        mix-blend-mode: multiply;
+        background: #2a1515;
+        color: #eb001b;
+        border: 1px solid rgba(235, 0, 27, 0.3);
       }
 
       .card-number {
@@ -10798,8 +10776,326 @@ main > section:nth-of-type(even) {
       .footer-links a:hover {
         color: var(--cc-orange);
       }
-    
-        
+
+      /* ── Account sidebar extras ──────────────────────────────────── */
+      .account-customer-badge {
+        font-size: 0.62rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--cc-orange);
+        border: 1px solid var(--cc-orange);
+        border-radius: 3px;
+        padding: 2px 7px;
+        align-self: flex-start;
+      }
+
+      .account-user {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        padding: 20px 20px 16px;
+        border-bottom: 1px solid var(--cc-border);
+      }
+
+      .account-avatar {
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+        background: #7a1e1e;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: "Barlow Condensed", sans-serif;
+        font-weight: 800;
+        font-size: 1rem;
+        letter-spacing: 0.04em;
+        flex-shrink: 0;
+      }
+
+      .account-logout-btn {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 13px 20px;
+        cursor: pointer;
+        transition: background 140ms ease, color 140ms ease;
+        color: var(--cc-muted);
+        font-size: 0.93rem;
+        font-weight: 500;
+        border: none;
+        border-top: 1px solid var(--cc-border);
+        background: none;
+        width: 100%;
+        text-align: left;
+      }
+
+      .account-logout-btn:hover {
+        color: #e05555;
+        background: rgba(224, 85, 85, 0.07);
+      }
+
+      .account-logout-btn svg {
+        width: 18px;
+        height: 18px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.8;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        flex-shrink: 0;
+      }
+
+      /* ── Payment panel extras ────────────────────────────────────── */
+      .payment-header-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 12px;
+      }
+
+      .payment-drag-hint {
+        font-size: 0.8rem;
+        color: var(--cc-muted);
+      }
+
+      .card-drag-handle {
+        color: var(--cc-muted);
+        cursor: grab;
+        display: flex;
+        align-items: center;
+        padding: 0 4px 0 0;
+        flex-shrink: 0;
+      }
+
+      .card-drag-handle svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+        stroke: none;
+      }
+
+      /* ── Orders table ────────────────────────────────────────────── */
+      .orders-table {
+        border: 1px solid var(--cc-border);
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+
+      .orders-table-header {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 36px;
+        padding: 10px 20px;
+        background: var(--cc-bg-strong);
+        border-bottom: 1px solid var(--cc-border);
+      }
+
+      .orders-table-header span {
+        font-size: 0.72rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--cc-muted);
+      }
+
+      .order-row {
+        border-bottom: 1px solid var(--cc-border);
+      }
+
+      .order-row:last-child {
+        border-bottom: none;
+      }
+
+      .order-row-main {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 36px;
+        align-items: center;
+        padding: 16px 20px;
+        cursor: pointer;
+        transition: background 120ms ease;
+      }
+
+      .order-row-main:hover {
+        background: var(--cc-surface-alt);
+      }
+
+      .order-row-num {
+        font-weight: 700;
+        font-size: 0.95rem;
+      }
+
+      .order-row-date,
+      .order-row-subtotal,
+      .order-row-tax {
+        font-size: 0.9rem;
+        color: var(--cc-muted);
+      }
+
+      .order-row-total {
+        font-weight: 700;
+        font-size: 0.95rem;
+      }
+
+      .order-badge.shipped {
+        background: rgba(32, 72, 106, 0.3);
+        color: #5baddd;
+        border: 1px solid rgba(91, 173, 221, 0.3);
+      }
+
+      .order-expand-icon {
+        color: var(--cc-muted);
+        display: flex;
+        align-items: center;
+        transition: transform 240ms ease;
+      }
+
+      .order-expand-icon svg {
+        width: 16px;
+        height: 16px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 2;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+
+      .order-row.is-expanded .order-expand-icon {
+        transform: rotate(90deg);
+      }
+
+      .order-row-detail {
+        display: none;
+        padding: 0 20px 20px;
+        background: var(--cc-bg-strong);
+        border-top: 1px solid var(--cc-border);
+      }
+
+      .order-row.is-expanded .order-row-detail {
+        display: block;
+      }
+
+      .order-detail-shipping {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+        padding: 16px 20px;
+        background: var(--cc-surface-alt);
+        border-radius: var(--radius);
+        margin-bottom: 16px;
+      }
+
+      .order-detail-shipping-field span:first-child {
+        display: block;
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: var(--cc-muted);
+        margin-bottom: 4px;
+      }
+
+      .order-detail-shipping-field span:last-child {
+        font-size: 0.92rem;
+        font-weight: 600;
+      }
+
+      .order-items-table {
+        border: 1px solid var(--cc-border);
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+
+      .order-items-header {
+        display: grid;
+        grid-template-columns: 1fr auto auto auto;
+        gap: 20px;
+        padding: 10px 16px;
+        background: var(--cc-bg-strong);
+        border-bottom: 1px solid var(--cc-border);
+      }
+
+      .order-items-header span {
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--cc-muted);
+      }
+
+      .order-items-header span:not(:first-child) {
+        text-align: right;
+        min-width: 70px;
+      }
+
+      .order-item-row {
+        display: grid;
+        grid-template-columns: 1fr auto auto auto;
+        gap: 20px;
+        align-items: center;
+        padding: 14px 16px;
+        border-bottom: 1px solid var(--cc-border);
+      }
+
+      .order-item-row:last-child {
+        border-bottom: none;
+      }
+
+      .order-item-info {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .order-item-thumb {
+        width: 44px;
+        height: 44px;
+        border-radius: 6px;
+        background: var(--cc-surface-alt);
+        overflow: hidden;
+        flex-shrink: 0;
+      }
+
+      .order-item-thumb img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      .order-item-name {
+        font-weight: 600;
+        font-size: 0.92rem;
+      }
+
+      .order-item-variant {
+        font-size: 0.8rem;
+        color: var(--cc-muted);
+        margin-top: 2px;
+      }
+
+      .order-item-price,
+      .order-item-qty,
+      .order-item-total {
+        font-size: 0.9rem;
+        text-align: right;
+        min-width: 70px;
+      }
+
+      .order-item-total {
+        font-weight: 700;
+      }
+
+      /* ── Wishlist panel ──────────────────────────────────────────── */
+      .saved-card-price {
+        font-family: "Barlow Condensed", sans-serif;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--cc-text);
+        margin-bottom: 14px;
+      }
+
+
         </style>
     </head>
     <body>
@@ -10853,9 +11149,10 @@ main > section:nth-of-type(even) {
 
         <!-- Sidebar -->
         <aside class="account-sidebar" data-comment="account-sidebar" data-comment="account-sidebar">
-          <div class="account-user" data-comment="account-sidebar-user" data-comment="account-sidebar-user">
-            <div class="account-avatar" data-comment="account-sidebar-avatar" data-comment="account-sidebar-avatar">JD</div>
-            <span class="account-username" data-comment="account-sidebar-name" data-comment="account-sidebar-name">John Doe</span>
+          <div class="account-user" data-comment="account-sidebar-user">
+            <div class="account-avatar" data-comment="account-sidebar-avatar">JD</div>
+            <span class="account-username" data-comment="account-sidebar-name">John Doe</span>
+            <span class="account-customer-badge" data-comment="account-sidebar-badge">Customer</span>
           </div>
           <nav class="account-nav" aria-label="Account navigation">
             <button class="account-nav-item is-active" data-tab="details" data-comment="account-nav-link-profile">
@@ -10875,10 +11172,14 @@ main > section:nth-of-type(even) {
             </button>
             <button class="account-nav-item" data-tab="saved" data-comment="account-nav-link-saved">
               <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-              Saved
+              Wishlist
               <svg class="nav-arrow" viewBox="0 0 24 24" width="14" height="14"><path d="M9 18l6-6-6-6" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
             </button>
           </nav>
+          <button class="account-logout-btn" data-comment="account-nav-logout">
+            <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+            Log out
+          </button>
         </aside>
 
         <!-- Content -->
@@ -10935,57 +11236,69 @@ main > section:nth-of-type(even) {
 
           <!-- Payment Methods -->
           <div class="account-panel" id="panel-payment">
-            <h1 class="panel-heading" data-comment="account-payment-heading" data-comment="account-payment-heading">Payment Methods</h1>
-            <p class="panel-sub" data-comment="account-payment-subtitle" data-comment="account-payment-subtitle">Manage your credit cards</p>
+            <h1 class="panel-heading" data-comment="account-payment-heading">Payment Methods</h1>
+            <p class="panel-sub" data-comment="account-payment-subtitle">Manage your payment cards</p>
 
-            <p class="payment-section-label">Default card: **** 6767</p>
-            <div class="card-list">
-              <div class="card-item is-default" data-comment="account-payment-card-1" data-component="card">
-                <div class="card-brand visa">VISA</div>
-                <span class="card-number">•••• •••• •••• 6767</span>
-                <button class="card-delete" aria-label="Remove card">
+            <div class="payment-header-row" data-comment="account-payment-default-label">
+              <p class="payment-section-label" style="margin:0">Default card: **** 4242</p>
+              <span class="payment-drag-hint" data-comment="account-payment-drag-hint">Drag to reorder</span>
+            </div>
+            <div class="card-list" data-comment="account-payment-default-list">
+              <div class="card-item is-default" data-comment="account-payment-card-1">
+                <span class="card-drag-handle" data-comment="account-payment-card-1-handle">
+                  <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="9" cy="5" r="1.2" fill="currentColor"/><circle cx="15" cy="5" r="1.2" fill="currentColor"/><circle cx="9" cy="12" r="1.2" fill="currentColor"/><circle cx="15" cy="12" r="1.2" fill="currentColor"/><circle cx="9" cy="19" r="1.2" fill="currentColor"/><circle cx="15" cy="19" r="1.2" fill="currentColor"/></svg>
+                </span>
+                <div class="card-brand visa" data-comment="account-payment-card-1-brand">VISA</div>
+                <span class="card-number" data-comment="account-payment-card-1-number">•••• •••• •••• 4242</span>
+                <button class="card-delete" aria-label="Remove card" data-comment="account-payment-card-1-delete">
                   <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v6M14 11v6"></path><path d="M9 6V4h6v2"></path></svg>
                 </button>
               </div>
             </div>
 
-            <p class="payment-section-label">Other your cards</p data-comment="account-payment-card-2" data-component="card">
-            <div class="card-list">
-              <div class="card-item" data-comment="account-payment-card-2" data-component="card">
-                <div class="card-brand mastercard"></div>
-                <span class="card-number">•••• •••• •••• 0089</span>
-                <button class="card-delete" aria-label="Remove card">
-                  <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v6M14 11v6" data-comment="account-payment-card-3" data-component="card"></path><path d="M9 6V4h6v2"></path></svg>
-                </button data-comment="account-payment-card-3" data-component="card">
+            <p class="payment-section-label" data-comment="account-payment-other-label">Other cards</p>
+            <div class="card-list" data-comment="account-payment-other-list">
+              <div class="card-item" data-comment="account-payment-card-2">
+                <span class="card-drag-handle" data-comment="account-payment-card-2-handle">
+                  <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="9" cy="5" r="1.2" fill="currentColor"/><circle cx="15" cy="5" r="1.2" fill="currentColor"/><circle cx="9" cy="12" r="1.2" fill="currentColor"/><circle cx="15" cy="12" r="1.2" fill="currentColor"/><circle cx="9" cy="19" r="1.2" fill="currentColor"/><circle cx="15" cy="19" r="1.2" fill="currentColor"/></svg>
+                </span>
+                <div class="card-brand mastercard" data-comment="account-payment-card-2-brand">MC</div>
+                <span class="card-number" data-comment="account-payment-card-2-number">•••• •••• •••• 0089</span>
+                <button class="card-delete" aria-label="Remove card" data-comment="account-payment-card-2-delete">
+                  <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v6M14 11v6"></path><path d="M9 6V4h6v2"></path></svg>
+                </button>
               </div>
-              <div class="card-item">
-                <div class="card-brand mastercard"></div>
-                <span class="card-number">•••• •••• •••• 0045</span>
-                <button class="card-delete" aria-label="Remove card">
+              <div class="card-item" data-comment="account-payment-card-3">
+                <span class="card-drag-handle" data-comment="account-payment-card-3-handle">
+                  <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="9" cy="5" r="1.2" fill="currentColor"/><circle cx="15" cy="5" r="1.2" fill="currentColor"/><circle cx="9" cy="12" r="1.2" fill="currentColor"/><circle cx="15" cy="12" r="1.2" fill="currentColor"/><circle cx="9" cy="19" r="1.2" fill="currentColor"/><circle cx="15" cy="19" r="1.2" fill="currentColor"/></svg>
+                </span>
+                <div class="card-brand mastercard" data-comment="account-payment-card-3-brand">MC</div>
+                <span class="card-number" data-comment="account-payment-card-3-number">•••• •••• •••• 0045</span>
+                <button class="card-delete" aria-label="Remove card" data-comment="account-payment-card-3-delete">
                   <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v6M14 11v6"></path><path d="M9 6V4h6v2"></path></svg>
                 </button>
               </div>
             </div>
 
-            <div class="add-card-section">
-              <h2 class="add-card-title">Add new card</h2>
+            <div class="add-card-section" data-comment="account-payment-add-section">
+              <h2 class="add-card-title" data-comment="account-payment-add-title">Add new card:</h2>
               <form data-component="form">
                 <div class="form-grid">
-                  <div class="form-group full">
-                    <label class="form-label" for="card-number">Card number:</label>
-                    <input class="form-input" id="card-number" type="text" placeholder="4141 3803 1091 8901" />
+                  <div class="form-group full" data-comment="account-payment-add-number">
+                    <label class="form-label" for="card-number" data-comment="account-payment-add-number-label">Card number</label>
+                    <input class="form-input" id="card-number" type="text" placeholder="4141 3893 1093 5901" data-comment="account-payment-add-number-input" />
                   </div>
-                  <div class="form-group">
-                    <label class="form-label" for="expiry">Expiry</label>
-                    <input class="form-input" id="expiry" type="text" placeholder="MM/YY" />
+                  <div class="form-group" data-comment="account-payment-add-expiry">
+                    <label class="form-label" for="expiry" data-comment="account-payment-add-expiry-label">Expiry</label>
+                    <input class="form-input" id="expiry" type="text" placeholder="MM / YY" data-comment="account-payment-add-expiry-input" />
                   </div>
-                  <div class="form-group">
-                    <label class="form-label" for="cvc">CVC</label>
-                    <input class="form-input" id="cvc" type="text" placeholder="– – –" />
+                  <div class="form-group" data-comment="account-payment-add-cvc">
+                    <label class="form-label" for="cvc" data-comment="account-payment-add-cvc-label">CVC</label>
+                    <input class="form-input" id="cvc" type="text" placeholder="· · ·" data-comment="account-payment-add-cvc-input" />
                   </div>
                 </div>
                 <div class="form-actions">
-                  <button type="submit" class="button button-primary">Add card</button>
+                  <button type="submit" class="button button-primary" data-comment="account-payment-add-btn">+ Add card</button>
                 </div>
               </form>
             </div>
@@ -10993,125 +11306,294 @@ main > section:nth-of-type(even) {
 
           <!-- Your Orders -->
           <div class="account-panel" id="panel-orders">
-            <h1 class="panel-heading" data-comment="account-orders-heading" data-comment="account-orders-heading">Your Orders</h1>
-            <p class="panel-sub" data-comment="account-orders-subtitle" data-comment="account-orders-subtitle">View your order history</p>
-            <div class="order-list">
-              <a class="order-item" href="#" data-comment="account-order-1" data-component="card">
-                <span class="order-id">Order #440291</span>
-                <span class="order-badge delivered">Delivered</span>
-                <span class="order-date">Nov 15, 2025</span>
-                <span class="order-total">$5,916.10</span>
-                <span class="order-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" data-comment="account-order-2" data-component="card"></svg></span>
-              </a>
-              <a class="order-item" href="#" data-comment="account-order-2" data-component="card">
-                <span class="order-id">Order #438104</span>
-                <span class="order-badge pending">Pending</span>
-                <span class="order-date">Oct 3, 2025</span>
-                <span class="order-total">$12,450.00</span>
-                <span class="order-arrow" data-comment="account-order-3" data-component="card"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6" data-comment="account-order-3" data-component="card"></svg></span>
-              </a>
-              <a class="order-item" href="#">
-                <span class="order-id">Order #435220</span>
-                <span class="order-badge delivered">Delivered</span>
-                <span class="order-date">Sep 12, 2025</span>
-                <span class="order-total">$780.00</span>
-                <span class="order-arrow"><svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg></span>
-              </a>
+            <h1 class="panel-heading" data-comment="account-orders-heading">Your Orders</h1>
+            <p class="panel-sub" data-comment="account-orders-subtitle">View and manage your purchase history</p>
+
+            <div class="orders-table" data-comment="account-orders-table">
+              <div class="orders-table-header" data-comment="account-orders-table-header">
+                <span data-comment="account-orders-col-num">Order #</span>
+                <span data-comment="account-orders-col-date">Date</span>
+                <span data-comment="account-orders-col-subtotal">Subtotal</span>
+                <span data-comment="account-orders-col-tax">Tax</span>
+                <span data-comment="account-orders-col-total">Total</span>
+                <span data-comment="account-orders-col-status">Status</span>
+                <span></span>
+              </div>
+
+              <!-- Order 1 — expandable -->
+              <div class="order-row is-expanded" data-comment="account-order-1">
+                <div class="order-row-main" data-comment="account-order-1-main">
+                  <span class="order-row-num" data-comment="account-order-1-num">#44291</span>
+                  <span class="order-row-date" data-comment="account-order-1-date">Nov 15, 2025</span>
+                  <span class="order-row-subtotal" data-comment="account-order-1-subtotal">$5,900.99</span>
+                  <span class="order-row-tax" data-comment="account-order-1-tax">$15.20</span>
+                  <span class="order-row-total" data-comment="account-order-1-total">$5,916.19</span>
+                  <span class="order-badge pending" data-comment="account-order-1-status">PENDING</span>
+                  <span class="order-expand-icon" data-comment="account-order-1-expand">
+                    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+                  </span>
+                </div>
+                <div class="order-row-detail" data-comment="account-order-1-detail">
+                  <div class="order-detail-shipping" data-comment="account-order-1-shipping">
+                    <div class="order-detail-shipping-field" data-comment="account-order-1-ship-method">
+                      <span>Shipping</span>
+                      <span>Pickup</span>
+                    </div>
+                    <div class="order-detail-shipping-field" data-comment="account-order-1-zip">
+                      <span>Zip Code</span>
+                      <span>13673</span>
+                    </div>
+                    <div class="order-detail-shipping-field" data-comment="account-order-1-address">
+                      <span>Address</span>
+                      <span>32660 US Route 11</span>
+                    </div>
+                    <div class="order-detail-shipping-field" data-comment="account-order-1-ship-date">
+                      <span>Ship Date</span>
+                      <span>Nov 22, 2025</span>
+                    </div>
+                  </div>
+                  <div class="order-items-table" data-comment="account-order-1-items">
+                    <div class="order-items-header" data-comment="account-order-1-items-header">
+                      <span data-comment="account-order-1-col-product">Product</span>
+                      <span data-comment="account-order-1-col-price">Price</span>
+                      <span data-comment="account-order-1-col-qty">QTY</span>
+                      <span data-comment="account-order-1-col-total">Total</span>
+                    </div>
+                    <div class="order-item-row" data-comment="account-order-1-item-1">
+                      <div class="order-item-info" data-comment="account-order-1-item-1-info">
+                        <div class="order-item-thumb" data-comment="account-order-1-item-1-thumb">
+                          <img src="img/shared/categories/chutes.png" alt="Handler PRO" data-comment="account-order-1-item-1-img">
+                        </div>
+                        <div>
+                          <div class="order-item-name" data-comment="account-order-1-item-1-name">Handler PRO Chute</div>
+                          <div class="order-item-variant" data-comment="account-order-1-item-1-variant">Vinyl Siding · Weatherwood</div>
+                        </div>
+                      </div>
+                      <span class="order-item-price" data-comment="account-order-1-item-1-price">$5,600.00</span>
+                      <span class="order-item-qty" data-comment="account-order-1-item-1-qty">1</span>
+                      <span class="order-item-total" data-comment="account-order-1-item-1-total">$5,600.00</span>
+                    </div>
+                    <div class="order-item-row" data-comment="account-order-1-item-2">
+                      <div class="order-item-info" data-comment="account-order-1-item-2-info">
+                        <div class="order-item-thumb" data-comment="account-order-1-item-2-thumb">
+                          <img src="img/shared/categories/options.png" alt="Neck Bar" data-comment="account-order-1-item-2-img">
+                        </div>
+                        <div>
+                          <div class="order-item-name" data-comment="account-order-1-item-2-name">Self-Catching Neck Bar</div>
+                          <div class="order-item-variant" data-comment="account-order-1-item-2-variant">Cedar · Natural Finish</div>
+                        </div>
+                      </div>
+                      <span class="order-item-price" data-comment="account-order-1-item-2-price">$300.99</span>
+                      <span class="order-item-qty" data-comment="account-order-1-item-2-qty">1</span>
+                      <span class="order-item-total" data-comment="account-order-1-item-2-total">$300.99</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Order 2 -->
+              <div class="order-row" data-comment="account-order-2">
+                <div class="order-row-main" data-comment="account-order-2-main">
+                  <span class="order-row-num" data-comment="account-order-2-num">#43815</span>
+                  <span class="order-row-date" data-comment="account-order-2-date">Oct 3, 2025</span>
+                  <span class="order-row-subtotal" data-comment="account-order-2-subtotal">$2,299.00</span>
+                  <span class="order-row-tax" data-comment="account-order-2-tax">$24.50</span>
+                  <span class="order-row-total" data-comment="account-order-2-total">$2,323.50</span>
+                  <span class="order-badge shipped" data-comment="account-order-2-status">SHIPPED</span>
+                  <span class="order-expand-icon" data-comment="account-order-2-expand">
+                    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+                  </span>
+                </div>
+                <div class="order-row-detail" data-comment="account-order-2-detail">
+                  <div class="order-detail-shipping" data-comment="account-order-2-shipping">
+                    <div class="order-detail-shipping-field" data-comment="account-order-2-ship-method">
+                      <span>Shipping</span>
+                      <span>Delivery</span>
+                    </div>
+                    <div class="order-detail-shipping-field" data-comment="account-order-2-zip">
+                      <span>Zip Code</span>
+                      <span>10001</span>
+                    </div>
+                    <div class="order-detail-shipping-field" data-comment="account-order-2-address">
+                      <span>Address</span>
+                      <span>45 Main Street</span>
+                    </div>
+                    <div class="order-detail-shipping-field" data-comment="account-order-2-ship-date">
+                      <span>Ship Date</span>
+                      <span>Oct 9, 2025</span>
+                    </div>
+                  </div>
+                  <div class="order-items-table" data-comment="account-order-2-items">
+                    <div class="order-items-header" data-comment="account-order-2-items-header">
+                      <span data-comment="account-order-2-col-product">Product</span>
+                      <span data-comment="account-order-2-col-price">Price</span>
+                      <span data-comment="account-order-2-col-qty">QTY</span>
+                      <span data-comment="account-order-2-col-total">Total</span>
+                    </div>
+                    <div class="order-item-row" data-comment="account-order-2-item-1">
+                      <div class="order-item-info" data-comment="account-order-2-item-1-info">
+                        <div class="order-item-thumb" data-comment="account-order-2-item-1-thumb">
+                          <img src="img/shared/categories/headgates.png" alt="CatchGate Pro" data-comment="account-order-2-item-1-img">
+                        </div>
+                        <div>
+                          <div class="order-item-name" data-comment="account-order-2-item-1-name">CatchGate Pro</div>
+                          <div class="order-item-variant" data-comment="account-order-2-item-1-variant">Standard · Galvanized</div>
+                        </div>
+                      </div>
+                      <span class="order-item-price" data-comment="account-order-2-item-1-price">$2,299.00</span>
+                      <span class="order-item-qty" data-comment="account-order-2-item-1-qty">1</span>
+                      <span class="order-item-total" data-comment="account-order-2-item-1-total">$2,299.00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Order 3 -->
+              <div class="order-row" data-comment="account-order-3">
+                <div class="order-row-main" data-comment="account-order-3-main">
+                  <span class="order-row-num" data-comment="account-order-3-num">#43201</span>
+                  <span class="order-row-date" data-comment="account-order-3-date">Sep 12, 2025</span>
+                  <span class="order-row-subtotal" data-comment="account-order-3-subtotal">$1,850.00</span>
+                  <span class="order-row-tax" data-comment="account-order-3-tax">$12.00</span>
+                  <span class="order-row-total" data-comment="account-order-3-total">$1,862.00</span>
+                  <span class="order-badge delivered" data-comment="account-order-3-status">DELIVERED</span>
+                  <span class="order-expand-icon" data-comment="account-order-3-expand">
+                    <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+                  </span>
+                </div>
+                <div class="order-row-detail" data-comment="account-order-3-detail">
+                  <div class="order-detail-shipping" data-comment="account-order-3-shipping">
+                    <div class="order-detail-shipping-field" data-comment="account-order-3-ship-method">
+                      <span>Shipping</span>
+                      <span>Pickup</span>
+                    </div>
+                    <div class="order-detail-shipping-field" data-comment="account-order-3-zip">
+                      <span>Zip Code</span>
+                      <span>13601</span>
+                    </div>
+                    <div class="order-detail-shipping-field" data-comment="account-order-3-address">
+                      <span>Address</span>
+                      <span>12 Farm Road</span>
+                    </div>
+                    <div class="order-detail-shipping-field" data-comment="account-order-3-ship-date">
+                      <span>Ship Date</span>
+                      <span>Sep 18, 2025</span>
+                    </div>
+                  </div>
+                  <div class="order-items-table" data-comment="account-order-3-items">
+                    <div class="order-items-header" data-comment="account-order-3-items-header">
+                      <span data-comment="account-order-3-col-product">Product</span>
+                      <span data-comment="account-order-3-col-price">Price</span>
+                      <span data-comment="account-order-3-col-qty">QTY</span>
+                      <span data-comment="account-order-3-col-total">Total</span>
+                    </div>
+                    <div class="order-item-row" data-comment="account-order-3-item-1">
+                      <div class="order-item-info" data-comment="account-order-3-item-1-info">
+                        <div class="order-item-thumb" data-comment="account-order-3-item-1-thumb">
+                          <img src="img/shared/categories/portable-units.png" alt="EZ Rancher" data-comment="account-order-3-item-1-img">
+                        </div>
+                        <div>
+                          <div class="order-item-name" data-comment="account-order-3-item-1-name">EZ Rancher Portable Unit</div>
+                          <div class="order-item-variant" data-comment="account-order-3-item-1-variant">Standard · Black</div>
+                        </div>
+                      </div>
+                      <span class="order-item-price" data-comment="account-order-3-item-1-price">$1,850.00</span>
+                      <span class="order-item-qty" data-comment="account-order-3-item-1-qty">1</span>
+                      <span class="order-item-total" data-comment="account-order-3-item-1-total">$1,850.00</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          <!-- Saved -->
+          <!-- Wishlist -->
           <div class="account-panel" id="panel-saved">
-            <h1 class="panel-heading" data-comment="account-saved-heading" data-comment="account-saved-heading">Saved</h1>
-            <p class="panel-sub" data-comment="account-saved-subtitle" data-comment="account-saved-subtitle">Products you've bookmarked</p>
-            <div class="saved-grid" data-comment="account-saved-grid" data-comment="account-saved-grid">
+            <h1 class="panel-heading" data-comment="account-saved-heading">Wishlist</h1>
+            <p class="panel-sub" data-comment="account-saved-subtitle">Products you've saved for later</p>
+            <div class="saved-grid" data-comment="account-saved-grid">
 
-              <div class="saved-card" data-product-id="CC-HP-STD" data-product-name="Handler PRO" data-product-category="Chutes">
-                <div class="saved-card-img">
-                  <img src="img/shared/categories/chutes.png" alt="Handler PRO" />
+              <div class="saved-card" data-product-id="CC-HP-STD" data-product-name="Handler PRO" data-product-category="Chutes" data-comment="account-saved-card-1">
+                <div class="saved-card-img" data-comment="account-saved-card-1-img">
+                  <img src="img/shared/categories/chutes.png" alt="Handler PRO" data-comment="account-saved-card-1-photo" />
                 </div>
-                <button class="btn-unsave" aria-label="Remove from saved">
+                <button class="btn-unsave" aria-label="Remove from saved" data-comment="account-saved-card-1-unsave">
                   <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
                 </button>
-                <div class="saved-card-body">
-                  <p class="saved-card-category">Chutes</p>
-                  <h3 class="saved-card-name">Handler PRO</h3>
-                  <p class="saved-card-sku">SKU: CC-HP-STD</p>
-                  <div class="saved-card-actions">
-                    <a class="button button-primary" href="./products.html">View</a>
-                    <a class="button button-outline" href="#">Add to Cart</a>
+                <div class="saved-card-body" data-comment="account-saved-card-1-body">
+                  <p class="saved-card-category" data-comment="account-saved-card-1-category">Chutes</p>
+                  <h3 class="saved-card-name" data-comment="account-saved-card-1-name">Handler PRO</h3>
+                  <p class="saved-card-price" data-comment="account-saved-card-1-price">$8,500</p>
+                  <div class="saved-card-actions" data-comment="account-saved-card-1-actions">
+                    <a class="button button-outline" href="./products.html" data-comment="account-saved-card-1-more">More</a>
                   </div>
                 </div>
               </div>
 
-              <div class="saved-card" data-product-id="CC-EZS-HYD" data-product-name="EZ Squeeze" data-product-category="Chutes">
-                <div class="saved-card-img">
-                  <img src="img/shared/categories/chutes.png" alt="EZ Squeeze" />
+              <div class="saved-card" data-product-id="CC-EZS-HYD" data-product-name="EZ Squeeze" data-product-category="Chutes" data-comment="account-saved-card-2">
+                <div class="saved-card-img" data-comment="account-saved-card-2-img">
+                  <img src="img/shared/product-ez-squeeze.png" alt="EZ Squeeze" data-comment="account-saved-card-2-photo" />
                 </div>
-                <button class="btn-unsave" aria-label="Remove from saved">
+                <button class="btn-unsave" aria-label="Remove from saved" data-comment="account-saved-card-2-unsave">
                   <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
                 </button>
-                <div class="saved-card-body">
-                  <p class="saved-card-category">Chutes</p>
-                  <h3 class="saved-card-name">EZ Squeeze</h3>
-                  <p class="saved-card-sku">SKU: CC-EZS-HYD</p>
-                  <div class="saved-card-actions">
-                    <a class="button button-primary" href="./products.html">View</a>
-                    <a class="button button-outline" href="#">Add to Cart</a>
+                <div class="saved-card-body" data-comment="account-saved-card-2-body">
+                  <p class="saved-card-category" data-comment="account-saved-card-2-category">Chutes</p>
+                  <h3 class="saved-card-name" data-comment="account-saved-card-2-name">EZ Squeeze</h3>
+                  <p class="saved-card-price" data-comment="account-saved-card-2-price">$10,900</p>
+                  <div class="saved-card-actions" data-comment="account-saved-card-2-actions">
+                    <a class="button button-outline" href="./products.html" data-comment="account-saved-card-2-more">More</a>
                   </div>
                 </div>
               </div>
 
-              <div class="saved-card" data-product-id="CC-CGP-STD" data-product-name="CatchGate Pro" data-product-category="Headgates">
-                <div class="saved-card-img">
-                  <img src="img/shared/categories/headgates.png" alt="CatchGate Pro" />
+              <div class="saved-card" data-product-id="CC-CGP-STD" data-product-name="CatchGate Pro" data-product-category="Headgates" data-comment="account-saved-card-3">
+                <div class="saved-card-img" data-comment="account-saved-card-3-img">
+                  <img src="img/shared/categories/headgates.png" alt="CatchGate Pro" data-comment="account-saved-card-3-photo" />
                 </div>
-                <button class="btn-unsave" aria-label="Remove from saved">
+                <button class="btn-unsave" aria-label="Remove from saved" data-comment="account-saved-card-3-unsave">
                   <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
                 </button>
-                <div class="saved-card-body">
-                  <p class="saved-card-category">Headgates</p>
-                  <h3 class="saved-card-name">CatchGate Pro</h3>
-                  <p class="saved-card-sku">SKU: CC-CGP-STD</p>
-                  <div class="saved-card-actions">
-                    <a class="button button-primary" href="./products.html">View</a>
-                    <a class="button button-outline" href="#">Add to Cart</a>
+                <div class="saved-card-body" data-comment="account-saved-card-3-body">
+                  <p class="saved-card-category" data-comment="account-saved-card-3-category">Headgates</p>
+                  <h3 class="saved-card-name" data-comment="account-saved-card-3-name">CatchGate Pro</h3>
+                  <p class="saved-card-price" data-comment="account-saved-card-3-price">$2,400</p>
+                  <div class="saved-card-actions" data-comment="account-saved-card-3-actions">
+                    <a class="button button-outline" href="./products.html" data-comment="account-saved-card-3-more">More</a>
                   </div>
                 </div>
               </div>
 
-              <div class="saved-card" data-product-id="CC-CT-10" data-product-name="Crowding Tub" data-product-category="Cattle Alley">
-                <div class="saved-card-img">
-                  <img src="img/shared/categories/cattle-alley.png" alt="Crowding Tub" />
+              <div class="saved-card" data-product-id="CC-CT-10" data-product-name="Crowding Tub" data-product-category="Cattle Alley" data-comment="account-saved-card-4">
+                <div class="saved-card-img" data-comment="account-saved-card-4-img">
+                  <img src="img/shared/categories/cattle-alley.png" alt="Crowding Tub" data-comment="account-saved-card-4-photo" />
                 </div>
-                <button class="btn-unsave" aria-label="Remove from saved">
+                <button class="btn-unsave" aria-label="Remove from saved" data-comment="account-saved-card-4-unsave">
                   <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
                 </button>
-                <div class="saved-card-body">
-                  <p class="saved-card-category">Cattle Alley</p>
-                  <h3 class="saved-card-name">Crowding Tub</h3>
-                  <p class="saved-card-sku">SKU: CC-CT-10</p>
-                  <div class="saved-card-actions">
-                    <a class="button button-primary" href="./products.html">View</a>
-                    <a class="button button-outline" href="#">Add to Cart</a>
+                <div class="saved-card-body" data-comment="account-saved-card-4-body">
+                  <p class="saved-card-category" data-comment="account-saved-card-4-category">Cattle Alley</p>
+                  <h3 class="saved-card-name" data-comment="account-saved-card-4-name">Crowding Tub</h3>
+                  <p class="saved-card-price" data-comment="account-saved-card-4-price">$3,200</p>
+                  <div class="saved-card-actions" data-comment="account-saved-card-4-actions">
+                    <a class="button button-outline" href="./products.html" data-comment="account-saved-card-4-more">More</a>
                   </div>
                 </div>
               </div>
 
-              <div class="saved-card" data-product-id="CC-EZR-PRT" data-product-name="EZ Rancher" data-product-category="Portable Units">
-                <div class="saved-card-img">
-                  <img src="img/shared/categories/portable-units.png" alt="EZ Rancher" />
+              <div class="saved-card" data-product-id="CC-EZR-PRT" data-product-name="EZ Rancher" data-product-category="Portable Units" data-comment="account-saved-card-5">
+                <div class="saved-card-img" data-comment="account-saved-card-5-img">
+                  <img src="img/shared/product-ez-rancher.png" alt="EZ Rancher" data-comment="account-saved-card-5-photo" />
                 </div>
-                <button class="btn-unsave" aria-label="Remove from saved">
+                <button class="btn-unsave" aria-label="Remove from saved" data-comment="account-saved-card-5-unsave">
                   <svg viewBox="0 0 24 24"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
                 </button>
-                <div class="saved-card-body">
-                  <p class="saved-card-category">Portable Units</p>
-                  <h3 class="saved-card-name">EZ Rancher</h3>
-                  <p class="saved-card-sku">SKU: CC-EZR-PRT</p>
-                  <div class="saved-card-actions">
-                    <a class="button button-primary" href="./products.html">View</a>
-                    <a class="button button-outline" href="#">Add to Cart</a>
+                <div class="saved-card-body" data-comment="account-saved-card-5-body">
+                  <p class="saved-card-category" data-comment="account-saved-card-5-category">Portable Units</p>
+                  <h3 class="saved-card-name" data-comment="account-saved-card-5-name">EZ Rancher</h3>
+                  <p class="saved-card-price" data-comment="account-saved-card-5-price">$6,800</p>
+                  <div class="saved-card-actions" data-comment="account-saved-card-5-actions">
+                    <a class="button button-outline" href="./products.html" data-comment="account-saved-card-5-more">More</a>
                   </div>
                 </div>
               </div>
@@ -13196,6 +13678,20 @@ document.addEventListener("visibilitychange", () => {
           card.style.transform = 'scale(0.95)';
           setTimeout(() => card.remove(), 200);
         });
+      });
+
+      // Expandable order rows
+      document.querySelectorAll('.order-row-main').forEach(main => {
+        main.addEventListener('click', () => {
+          const row = main.closest('.order-row');
+          row.classList.toggle('is-expanded');
+          const detail = row.querySelector('.order-row-detail');
+          detail.style.display = row.classList.contains('is-expanded') ? 'block' : 'none';
+        });
+      });
+      // Init: show detail for already-expanded rows
+      document.querySelectorAll('.order-row.is-expanded .order-row-detail').forEach(d => {
+        d.style.display = 'block';
       });
 
       // Prevent form submits
