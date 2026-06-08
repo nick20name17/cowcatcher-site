@@ -5637,21 +5637,22 @@ main > section:nth-of-type(even) {
 
 .pdp-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(340px, 0.95fr);
-  gap: 46px;
+  grid-template-columns: 500px 1fr;
+  gap: 48px;
   align-items: start;
 }
 
 .pdp-gallery {
   display: grid;
-  grid-template-columns: 74px minmax(0, 1fr);
-  gap: 16px;
+  grid-template-columns: 1fr;
+  gap: 12px;
   align-items: start;
 }
 
 .pdp-thumbs {
-  display: grid;
-  gap: 12px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .pdp-thumb {
@@ -5680,7 +5681,7 @@ main > section:nth-of-type(even) {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 610px;
+  aspect-ratio: 1 / 1;
   padding: 36px;
   border: 1px solid rgba(237, 232, 225, 0.08);
   border-radius: 18px;
@@ -5737,15 +5738,50 @@ main > section:nth-of-type(even) {
 .pdp-status {
   margin: 0;
   width: fit-content;
-  padding: 0.5rem 1rem;
+  padding: 4px 10px;
   border-radius: 999px;
-  background: rgba(224, 123, 26, 0.16);
-  border: 1px solid rgba(224, 123, 26, 0.42);
-  color: var(--cc-orange);
-  font-size: 0.82rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
+  border: 1px solid;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.07em;
   text-transform: uppercase;
+  line-height: 1.4;
+}
+
+.pdp-status.badge-featured {
+  border-color: rgba(220, 38, 38, 0.45);
+  background: rgba(220, 38, 38, 0.12);
+  color: #fca5a5;
+}
+
+.pdp-status.badge-new {
+  border-color: rgba(74, 222, 128, 0.45);
+  background: rgba(74, 222, 128, 0.10);
+  color: #86efac;
+}
+
+.pdp-status.badge-out-of-stock {
+  border-color: rgba(156, 163, 175, 0.35);
+  background: rgba(156, 163, 175, 0.08);
+  color: #9ca3af;
+}
+
+.pdp-status.badge-clearance {
+  border-color: rgba(251, 146, 60, 0.45);
+  background: rgba(251, 146, 60, 0.12);
+  color: #fdba74;
+}
+
+.pdp-status.badge-coming-soon {
+  border-color: rgba(234, 179, 8, 0.5);
+  background: rgba(234, 179, 8, 0.12);
+  color: #fde047;
+}
+
+.pdp-status.badge-preproduction {
+  border-color: rgba(224, 123, 26, 0.42);
+  background: rgba(224, 123, 26, 0.12);
+  color: var(--cc-orange);
 }
 
 .pdp-category {
@@ -5761,16 +5797,24 @@ main > section:nth-of-type(even) {
 }
 
 .pdp-lead {
-  margin: 0;
+  margin: calc(8px - 28px) 0 0;
   color: rgba(237, 232, 225, 0.68);
-  font-size: 1.08rem;
+  font-size: 0.875rem;
   line-height: 1.7;
 }
 
-.pdp-summary hr,
 .pdp-tabs {
   border: none;
   border-top: 1px solid rgba(237, 232, 225, 0.08);
+}
+
+.pdp-options-card {
+  margin-top: calc(24px - 28px);
+  background: var(--cc-surface);
+  border-radius: 16px;
+  padding: 24px;
+  display: grid;
+  gap: 28px;
 }
 
 #pdp-options {
@@ -5794,14 +5838,48 @@ main > section:nth-of-type(even) {
 }
 
 .pdp-option-group {
+  display: none;
+}
+
+.pdp-option-group.is-open {
   display: grid;
   gap: 16px;
+  animation: pdp-group-reveal 260ms ease forwards;
+}
+
+@keyframes pdp-group-reveal {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .pdp-option-group h3,
 .pdp-quantity h3 {
   margin: 0;
   font-size: 0.96rem;
+}
+
+.pdp-nest-container {
+  position: relative;
+  display: grid;
+  gap: 20px;
+  padding-left: 28px;
+  margin-top: 4px;
+}
+
+.pdp-nest-container::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: -18px;
+  width: 16px;
+  height: 30px;
+  border-left: 1.5px solid rgba(224, 123, 26, 0.35);
+  border-bottom: 1.5px solid rgba(224, 123, 26, 0.35);
+  border-bottom-left-radius: 8px;
+}
+
+.pdp-nest-container[hidden] {
+  display: none;
 }
 
 .pdp-option-list {
@@ -5873,6 +5951,19 @@ main > section:nth-of-type(even) {
 }
 
 .pdp-option-button.is-active .pdp-option-check::after {
+  opacity: 1;
+}
+
+.pdp-option-thumb {
+  width: 28px;
+  height: 28px;
+  border-radius: 4px;
+  object-fit: cover;
+  flex-shrink: 0;
+  opacity: 0.85;
+}
+
+.pdp-option-button.is-active .pdp-option-thumb {
   opacity: 1;
 }
 
@@ -6087,7 +6178,7 @@ main > section:nth-of-type(even) {
 }
 
 .pdp-followup {
-  padding: 0 0 104px;
+  padding: 48px 0 104px;
 }
 
 .pdp-collection-section + .pdp-collection-section {
@@ -6270,13 +6361,7 @@ main > section:nth-of-type(even) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .pdp-gallery {
-    grid-template-columns: 1fr;
-  }
-
   .pdp-thumbs {
-    grid-auto-flow: column;
-    grid-auto-columns: 74px;
     overflow-x: auto;
   }
 
@@ -6373,7 +6458,7 @@ main > section:nth-of-type(even) {
                 <path d="M16 16L21 21"></path>
               </svg>
             </a>
-            <a class="icon-button" href="./cart.html" aria-label="Cart" data-comment="header-cart-icon">
+            <a class="icon-button" href="#cart" aria-label="Cart" data-comment="header-cart-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <circle cx="9" cy="20" r="1.5"></circle>
                 <circle cx="18" cy="20" r="1.5"></circle>
@@ -6407,7 +6492,6 @@ main > section:nth-of-type(even) {
         <div class="container">
           <div class="pdp-grid">
             <section class="pdp-gallery" data-comment="pdp-gallery">
-              <div class="pdp-thumbs" id="pdp-thumbs" data-comment="pdp-thumbs"></div>
               <div class="pdp-stage" data-comment="pdp-stage">
                 <button class="pdp-stage-nav prev" type="button" id="pdp-prev-image" aria-label="Previous image" data-comment="pdp-prev-image" data-component="button">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -6421,6 +6505,7 @@ main > section:nth-of-type(even) {
                   </svg>
                 </button>
               </div>
+              <div class="pdp-thumbs" id="pdp-thumbs" data-comment="pdp-thumbs"></div>
             </section>
 
             <section class="pdp-summary" data-comment="pdp-summary">
@@ -6428,29 +6513,30 @@ main > section:nth-of-type(even) {
               <p class="pdp-category" id="pdp-category" data-comment="pdp-category"></p>
               <h1 id="pdp-title" data-comment="pdp-title"></h1>
               <p class="pdp-lead" id="pdp-lead" data-comment="pdp-lead"></p>
-              <hr />
 
-              <div id="pdp-options" data-comment="pdp-options"></div>
+              <div class="pdp-options-card" data-comment="pdp-options-card">
+                <div id="pdp-options" data-comment="pdp-options"></div>
 
-              <section class="pdp-quantity" data-comment="pdp-quantity">
-                <h3>Quantity</h3>
-                <div class="pdp-quantity-stepper">
-                  <button type="button" id="pdp-qty-dec" aria-label="Decrease quantity" data-comment="pdp-qty-decrease" data-component="button">-</button>
-                  <span id="pdp-qty-value" data-comment="pdp-qty-value">1</span>
-                  <button type="button" id="pdp-qty-inc" aria-label="Increase quantity" data-comment="pdp-qty-increase" data-component="button">+</button>
+                <section class="pdp-quantity" data-comment="pdp-quantity">
+                  <h3>Quantity</h3>
+                  <div class="pdp-quantity-stepper">
+                    <button type="button" id="pdp-qty-dec" aria-label="Decrease quantity" data-comment="pdp-qty-decrease" data-component="button">-</button>
+                    <span id="pdp-qty-value" data-comment="pdp-qty-value">1</span>
+                    <button type="button" id="pdp-qty-inc" aria-label="Increase quantity" data-comment="pdp-qty-increase" data-component="button">+</button>
+                  </div>
+                </section>
+
+                <p class="pdp-price" id="pdp-price" data-comment="pdp-price"></p>
+
+                <div class="pdp-actions">
+                  <button class="pdp-add-cart" type="button" id="pdp-add-cart" data-comment="pdp-add-cart" data-component="button">Add to Cart</button>
+                  <button class="pdp-save" type="button" id="pdp-save" aria-pressed="false" aria-label="Save product" data-comment="pdp-save" data-component="button">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                      <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
+                    </svg>
+                    <span data-save-label data-comment="pdp-save-label">Save Product</span>
+                  </button>
                 </div>
-              </section>
-
-              <p class="pdp-price" id="pdp-price" data-comment="pdp-price"></p>
-
-              <div class="pdp-actions">
-                <button class="pdp-add-cart" type="button" id="pdp-add-cart" data-comment="pdp-add-cart" data-component="button">Add to Cart</button>
-                <button class="pdp-save" type="button" id="pdp-save" aria-pressed="false" aria-label="Save product" data-comment="pdp-save" data-component="button">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path>
-                  </svg>
-                  <span data-save-label data-comment="pdp-save-label">Save Product</span>
-                </button>
               </div>
 
               <p class="pdp-feedback" id="pdp-feedback" hidden data-comment="pdp-feedback"></p>
@@ -6719,11 +6805,10 @@ document.querySelector('a[href="#search"]')?.addEventListener("click", (e) => {
   openSearch();
 });
 document.querySelector('a[href="#cart"]')?.addEventListener("click", (e) => {
-  if (window.CC_CART_DRAWER_ACTIVE) {
-    return;
-  }
   e.preventDefault();
-  openCart();
+  if (!window.CC_CART_DRAWER_ACTIVE) {
+    openCart();
+  }
 });
 document.querySelector('a[href="#account"]')?.addEventListener("click", (e) => {
   e.preventDefault();
@@ -7384,7 +7469,9 @@ document.addEventListener("visibilitychange", () => {
       filter: "All Units",
       options: [
         { name: "Headgate", choices: ["None", "Single Auto Catch", "Double Auto Catch"], defaultChoice: "None" },
+        { name: "Headgate Detail", choices: ["Option 1", "Option 2"] },
         { name: "Floor Type", choices: ["Standard", "Rubber Mat"], defaultChoice: "Standard" },
+        { name: "Floor Detail", choices: ["Option 1", "Option 2"] },
       ],
       description(name) {
         return `${name} is built as a complete portable cattle handling package, combining proven Cowcatcher components into a system that can be set up fast and moved where the work is.`;
@@ -7546,6 +7633,7 @@ document.addEventListener("visibilitychange", () => {
       sku: "CC-EZS-MAT",
       name: "EZ Squeeze Manual, Alleyway and Tub",
       category: "portable-units",
+      badge: "New",
       price: 12450,
       gallery: [
         "img/shared/categories/portable-units.png",
@@ -7578,7 +7666,7 @@ document.addEventListener("visibilitychange", () => {
       name: "Rancher's Choice",
       category: "chutes",
       price: 13950,
-      badge: "Preproduction",
+      badge: "Coming soon",
       summaryLabel: "Hydraulic Squeeze Chute · Preproduction",
       image: "img/shared/chutes-equipment.png",
       gallery: ["img/shared/chutes-equipment.png", "img/shared/categories/chutes.png"],
@@ -8310,9 +8398,22 @@ document.addEventListener("visibilitychange", () => {
     document.title = `${product.name} | Cowcatcher`;
     qs("#pdp-back-link").href = product.categoryPage;
     qs("#pdp-back-label").textContent = `Back to ${product.categoryName}`;
+    function badgeClass(badge) {
+      const map = {
+        "Featured": "badge-featured",
+        "New": "badge-new",
+        "Out of stock": "badge-out-of-stock",
+        "Clearance": "badge-clearance",
+        "Coming soon": "badge-coming-soon",
+        "Preproduction": "badge-preproduction",
+      };
+      return map[badge] || "badge-featured";
+    }
+
     const statusBadge = qs("#pdp-status");
     statusBadge.hidden = !product.badge;
     statusBadge.textContent = product.badge || "";
+    statusBadge.className = product.badge ? `pdp-status ${badgeClass(product.badge)}` : "pdp-status";
     qs("#pdp-category").textContent = product.summaryLabel || product.categoryName;
     qs("#pdp-title").textContent = product.name;
     qs("#pdp-lead").textContent = product.description;
@@ -8411,46 +8512,44 @@ document.addEventListener("visibilitychange", () => {
         `
       : "";
 
-    optionsWrap.innerHTML = `${optionsStatusMarkup}${product.options
-      .map(
-        (option) => `
-          <section class="pdp-option-group" data-option-group="${option.name}">
-            <h3>${option.name}</h3>
-            <div class="pdp-option-list">
-              ${(normalizedChoicesByGroup.get(option.name) || [])
-                .map(
-                  (choice) => `
-                    <button
-                      class="pdp-option-button ${
-                        option.multiple
-                          ? (selections[option.name] || []).includes(choice.value)
-                            ? "is-active"
-                            : ""
-                          : choice.value === selections[option.name]
-                            ? "is-active"
-                            : ""
-                      } ${choice.priceDelta ? "has-meta" : ""}"
-                      type="button"
-                      data-option-group-name="${option.name}"
-                      data-option-choice="${escapeHtml(choice.value)}"
-                      data-option-multiple="${option.multiple ? "true" : "false"}"
-                    >
-                      <span class="pdp-option-check" aria-hidden="true"></span>
-                      <span class="pdp-option-label">${escapeHtml(choice.label)}</span>
-                      ${
-                        choice.priceDelta
-                          ? `<span class="pdp-option-meta">+${fmtPrice(choice.priceDelta)}</span>`
-                          : ""
-                      }
-                    </button>
-                  `
-                )
-                .join("")}
-            </div>
-          </section>
-        `
-      )
-      .join("")}`;
+    function renderOptionGroupSection(option, idx) {
+      return `
+        <section class="pdp-option-group ${idx === 0 ? "is-open" : ""}" data-option-group="${option.name}" data-option-index="${idx}" data-comment="pdp-option-group-${idx + 1}">
+          <h3 class="pdp-option-title" data-comment="pdp-option-title-${idx + 1}">Option</h3>
+          <div class="pdp-option-list" data-comment="pdp-option-list-${idx + 1}">
+            ${(normalizedChoicesByGroup.get(option.name) || [])
+              .map(
+                (choice, ci) =>
+                  `<button
+                    class="pdp-option-button ${
+                      option.multiple
+                        ? (selections[option.name] || []).includes(choice.value) ? "is-active" : ""
+                        : choice.value === selections[option.name] ? "is-active" : ""
+                    } ${choice.priceDelta ? "has-meta" : ""}"
+                    type="button"
+                    data-option-group-name="${option.name}"
+                    data-option-choice="${escapeHtml(choice.value)}"
+                    data-option-multiple="${option.multiple ? "true" : "false"}"
+                    data-comment="pdp-option-btn-${idx + 1}-${ci + 1}"
+                  >
+                    <span class="pdp-option-check" aria-hidden="true"></span>
+                    <img class="pdp-option-thumb" src="https://picsum.photos/seed/${idx * 20 + ci + 1}/56/56" alt="" aria-hidden="true" data-comment="pdp-option-thumb-${idx + 1}-${ci + 1}" />
+                    <span class="pdp-option-label">${escapeHtml(choice.label)}</span>
+                    ${choice.priceDelta ? `<span class="pdp-option-meta">+${fmtPrice(choice.priceDelta)}</span>` : ""}
+                  </button>`
+              )
+              .join("")}
+          </div>
+        </section>
+      `;
+    }
+
+    let nestedContainers = "";
+    for (let i = product.options.length - 1; i >= 1; i--) {
+      nestedContainers = `<div class="pdp-nest-container" id="pdp-nest-${i - 1}" data-comment="pdp-nest-${i}" hidden>${renderOptionGroupSection(product.options[i], i)}${nestedContainers}</div>`;
+    }
+
+    optionsWrap.innerHTML = `${optionsStatusMarkup}${renderOptionGroupSection(product.options[0], 0)}${nestedContainers}`;
 
     descriptionPanel.innerHTML = `
       <p>${product.description}</p>
@@ -8506,7 +8605,6 @@ document.addEventListener("visibilitychange", () => {
                   <img src="${item.image}" alt="${escapeHtml(item.name)}" loading="lazy" />
                 </div>
                 <div class="pdp-collection-body">
-                  <p class="pdp-card-kicker">${escapeHtml(item.categoryName)}</p>
                   <h3 class="pdp-card-title">${escapeHtml(item.name)}</h3>
                   <p class="pdp-card-description">${escapeHtml(truncateText(item.description, 72))}</p>
                   <span class="pdp-card-chip">${escapeHtml(item.filter)}</span>
@@ -8569,6 +8667,7 @@ document.addEventListener("visibilitychange", () => {
       const choiceValue = optionButton.dataset.optionChoice;
       const isMultiple = optionButton.dataset.optionMultiple === "true";
       const groupElement = optionButton.closest(".pdp-option-group");
+      const groupIndex = Number(groupElement.dataset.optionIndex);
 
       if (isMultiple) {
         const activeValues = Array.isArray(selections[groupName]) ? selections[groupName].slice() : [];
@@ -8588,10 +8687,39 @@ document.addEventListener("visibilitychange", () => {
         return;
       }
 
+      const prevValue = selections[groupName];
+      const selectionChanged = prevValue !== choiceValue;
+
       selections[groupName] = choiceValue;
       groupElement
         ?.querySelectorAll("[data-option-choice]")
         .forEach((button) => button.classList.toggle("is-active", button === optionButton));
+
+      const nestEl = document.getElementById(`pdp-nest-${groupIndex}`);
+      if (nestEl) {
+        nestEl.hidden = false;
+
+        const nextGroup = nestEl.querySelector(":scope > .pdp-option-group");
+        if (nextGroup) nextGroup.classList.add("is-open");
+
+        if (selectionChanged) {
+          nestEl.querySelectorAll(".pdp-nest-container").forEach((n) => { n.hidden = true; });
+          nestEl.querySelectorAll(".pdp-nest-container .pdp-option-group [data-option-choice]").forEach((b) => b.classList.remove("is-active"));
+          nestEl.querySelectorAll(".pdp-nest-container .pdp-option-group").forEach((g) => {
+            const gName = g.dataset.optionGroup;
+            const gOpt = product.options.find((o) => o.name === gName);
+            if (gOpt) selections[gName] = gOpt.multiple ? [] : "";
+          });
+
+          if (nextGroup) {
+            nextGroup.querySelectorAll("[data-option-choice]").forEach((b) => b.classList.remove("is-active"));
+            const nextGroupName = nextGroup.dataset.optionGroup;
+            const nextOpt = product.options.find((o) => o.name === nextGroupName);
+            if (nextOpt && !nextOpt.multiple) selections[nextGroupName] = "";
+          }
+        }
+      }
+
       renderCurrentPrice();
       renderOptionPromptState();
     });

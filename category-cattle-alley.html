@@ -5481,11 +5481,12 @@ main > section:nth-of-type(even) {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 292px;
-  margin: 24px 24px 0;
-  padding: 20px;
+  aspect-ratio: 1 / 1;
+  margin: 16px 16px 0;
+  padding: 16px;
   border-radius: 8px;
   background: #2f2b28;
+  overflow: hidden;
 }
 
 .catalog-card-media img {
@@ -5540,34 +5541,22 @@ main > section:nth-of-type(even) {
 
 .catalog-card-body {
   display: grid;
-  gap: 10px;
-  padding: 22px 24px 24px;
+  gap: 8px;
+  padding: 16px;
 }
 
 .catalog-card-type {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 2;
-  margin: 0;
-  padding: 4px 9px;
-  border-radius: 999px;
-  border: 1px solid rgba(224, 123, 26, 0.35);
-  background: rgba(20, 18, 16, 0.82);
-  color: var(--cc-orange);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
-  line-height: 1.4;
-  backdrop-filter: blur(4px);
+  display: none;
 }
 
 .catalog-card-title {
   margin: 0;
   max-width: none;
-  font-size: clamp(1.45rem, 1.8vw, 2rem);
-  line-height: 1.04;
+  font-family: "Barlow", sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  font-style: normal;
+  line-height: 1.3;
   text-wrap: balance;
 }
 
@@ -5597,6 +5586,53 @@ main > section:nth-of-type(even) {
   stroke-width: 2;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+
+.catalog-card-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 2;
+  margin: 0;
+  padding: 3px 8px;
+  border-radius: 999px;
+  border: 1px solid;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  line-height: 1.4;
+  backdrop-filter: blur(4px);
+}
+
+.catalog-card-badge.badge-featured {
+  border-color: rgba(220, 38, 38, 0.45);
+  background: rgba(220, 38, 38, 0.12);
+  color: #fca5a5;
+}
+
+.catalog-card-badge.badge-new {
+  border-color: rgba(74, 222, 128, 0.45);
+  background: rgba(74, 222, 128, 0.10);
+  color: #86efac;
+}
+
+.catalog-card-badge.badge-out-of-stock {
+  border-color: rgba(156, 163, 175, 0.35);
+  background: rgba(156, 163, 175, 0.08);
+  color: #9ca3af;
+}
+
+.catalog-card-badge.badge-clearance {
+  border-color: rgba(251, 146, 60, 0.45);
+  background: rgba(251, 146, 60, 0.12);
+  color: #fdba74;
+}
+
+.catalog-card-badge.badge-coming-soon {
+  border-color: rgba(234, 179, 8, 0.5);
+  background: rgba(234, 179, 8, 0.12);
+  color: #fde047;
 }
 
 .catalog-empty {
@@ -6373,7 +6409,7 @@ main > section:nth-of-type(even) {
                 <path d="M16 16L21 21"></path>
               </svg>
             </a>
-            <a class="icon-button" href="./cart.html" aria-label="Cart" data-comment="header-cart-icon">
+            <a class="icon-button" href="#cart" aria-label="Cart" data-comment="header-cart-icon">
               <svg viewBox="0 0 24 24" aria-hidden="true">
                 <circle cx="9" cy="20" r="1.5"></circle>
                 <circle cx="18" cy="20" r="1.5"></circle>
@@ -6672,11 +6708,10 @@ document.querySelector('a[href="#search"]')?.addEventListener("click", (e) => {
   openSearch();
 });
 document.querySelector('a[href="#cart"]')?.addEventListener("click", (e) => {
-  if (window.CC_CART_DRAWER_ACTIVE) {
-    return;
-  }
   e.preventDefault();
-  openCart();
+  if (!window.CC_CART_DRAWER_ACTIVE) {
+    openCart();
+  }
 });
 document.querySelector('a[href="#account"]')?.addEventListener("click", (e) => {
   e.preventDefault();
@@ -7500,6 +7535,7 @@ document.addEventListener("visibilitychange", () => {
       name: "EZ Squeeze Manual, Alleyway and Tub",
       category: "portable-units",
       price: 12450,
+      badge: "Featured",
       gallery: [
         "img/shared/categories/portable-units.png",
         "img/shared/product-ez-squeeze.png",
@@ -7531,11 +7567,11 @@ document.addEventListener("visibilitychange", () => {
       name: "Rancher's Choice",
       category: "chutes",
       price: 13950,
-      badge: "Preproduction",
-      summaryLabel: "Hydraulic Squeeze Chute · Preproduction",
+      badge: "Coming soon",
+      summaryLabel: "Hydraulic Squeeze Chute · Coming soon",
       image: "img/shared/chutes-equipment.png",
       gallery: ["img/shared/chutes-equipment.png", "img/shared/categories/chutes.png"],
-      cardType: "Hydraulic Squeeze Chute · Preproduction",
+      cardType: "Hydraulic Squeeze Chute",
       type: "Hydraulic Squeeze Chute",
       filter: "Hydraulic Squeeze",
       description:
@@ -7588,6 +7624,7 @@ document.addEventListener("visibilitychange", () => {
       name: "The Restrainer Hydraulic Chute",
       category: "chutes",
       price: 10900,
+      badge: "New",
       image: "img/shared/chutes-equipment.png",
       gallery: ["img/shared/chutes-equipment.png", "img/shared/categories/chutes.png"],
       cardType: "Hydraulic Squeeze Chute",
@@ -7624,6 +7661,7 @@ document.addEventListener("visibilitychange", () => {
       name: "Sub Sider Cattle Chute",
       category: "chutes",
       price: 3200,
+      badge: "Clearance",
       image: "img/shared/chutes-equipment.png",
       gallery: ["img/shared/chutes-equipment.png", "img/shared/categories/chutes.png"],
       cardType: "Fixed Chute",
@@ -7636,6 +7674,7 @@ document.addEventListener("visibilitychange", () => {
       name: "Sub Sider Pro",
       category: "chutes",
       price: 4200,
+      badge: "Out of stock",
       image: "img/shared/chutes-equipment.png",
       gallery: ["img/shared/chutes-equipment.png", "img/shared/categories/chutes.png"],
       cardType: "Fixed Chute",
@@ -7648,6 +7687,7 @@ document.addEventListener("visibilitychange", () => {
       name: "Double Lane Cattle Alley",
       category: "cattle-alley",
       price: 4100,
+      badge: "Featured",
       image: "img/shared/categories/cattle-alley.png",
       gallery: ["img/shared/categories/cattle-alley.png"],
       cardType: "Cattle Alley",
@@ -7660,6 +7700,7 @@ document.addEventListener("visibilitychange", () => {
       name: "Single Lane Cattle Alley",
       category: "cattle-alley",
       price: 3200,
+      badge: "New",
       image: "img/shared/categories/cattle-alley.png",
       gallery: ["img/shared/categories/cattle-alley.png"],
       cardType: "Cattle Alley",
@@ -7672,6 +7713,7 @@ document.addEventListener("visibilitychange", () => {
       name: "Double Headgate Auto Catch & Hydraulic Swing Back",
       category: "headgates",
       price: 3100,
+      badge: "Featured",
       cardType: "Hydraulic Headgate",
       type: "Hydraulic Headgate",
       filter: "Hydraulic",
@@ -7682,6 +7724,7 @@ document.addEventListener("visibilitychange", () => {
       name: "Double Headgate Fully Hydraulic",
       category: "headgates",
       price: 2950,
+      badge: "Clearance",
       cardType: "Hydraulic Headgate",
       type: "Hydraulic Headgate",
       filter: "Hydraulic",
@@ -7692,6 +7735,7 @@ document.addEventListener("visibilitychange", () => {
       name: "Galvanized Single Headgate Auto Catch",
       category: "headgates",
       price: 2400,
+      badge: "New",
       cardType: "Autocatch Headgate",
       type: "Autocatch Headgate",
       filter: "Autocatch",
@@ -7722,6 +7766,7 @@ document.addEventListener("visibilitychange", () => {
       name: "Brisket Bar",
       category: "accessories",
       price: 420,
+      badge: "New",
       cardType: "Option / Accessory",
       type: "Option / Accessory",
       filter: "Bars",
@@ -7752,6 +7797,7 @@ document.addEventListener("visibilitychange", () => {
       name: "Roll Out Gate Add On",
       category: "accessories",
       price: 980,
+      badge: "Coming soon",
       cardType: "Option / Accessory",
       type: "Option / Accessory",
       filter: "Gates",
@@ -7762,6 +7808,7 @@ document.addEventListener("visibilitychange", () => {
       name: "Vet Cage Add On",
       category: "accessories",
       price: 1550,
+      badge: "Featured",
       cardType: "Option / Accessory",
       type: "Option / Accessory",
       filter: "Cages",
@@ -7812,6 +7859,17 @@ document.addEventListener("visibilitychange", () => {
       .replaceAll(">", "&gt;")
       .replaceAll('"', "&quot;")
       .replaceAll("'", "&#39;");
+  }
+
+  function badgeClass(badge) {
+    const map = {
+      "Featured": "badge-featured",
+      "New": "badge-new",
+      "Out of stock": "badge-out-of-stock",
+      "Clearance": "badge-clearance",
+      "Coming soon": "badge-coming-soon",
+    };
+    return map[badge] || "badge-featured";
   }
 
   function truncateText(value, maxLength = 120) {
@@ -8172,6 +8230,7 @@ document.addEventListener("visibilitychange", () => {
               <a class="catalog-card-hit" href="./product.html?product=${encodeURIComponent(product.id)}">
                 <div class="catalog-card-media">
                   <p class="catalog-card-type">${product.cardType}</p>
+                  ${product.badge ? `<p class="catalog-card-badge ${badgeClass(product.badge)}">${escapeHtml(product.badge)}</p>` : ""}
                   <img src="${product.image}" alt="${product.name}" loading="lazy" />
                 </div>
                 <div class="catalog-card-body">

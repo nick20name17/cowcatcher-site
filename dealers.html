@@ -2917,7 +2917,7 @@ main > section:nth-of-type(even) {
 /* ─── Dealer Cards ───────────────────────────────────────── */
 .dealer-grid {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 20px;
   margin-top: 42px;
 }
@@ -3036,8 +3036,8 @@ main > section:nth-of-type(even) {
   grid-template-columns: minmax(320px, 0.86fr) minmax(0, 1.4fr);
   gap: 24px;
   align-items: stretch;
-  max-height: 800px;
-  height: 800px;
+  max-height: 700px;
+  height: 700px;
 }
 
 .dealer-locator-map-shell,
@@ -3105,8 +3105,8 @@ main > section:nth-of-type(even) {
 
 .dealer-locator-panel > .frame-surface {
   display: grid;
-  grid-template-rows: auto 1fr;
-  gap: 18px;
+  grid-template-rows: auto auto 1fr;
+  gap: 14px;
   height: 100%;
   padding: 24px;
   overflow-y: auto;
@@ -3232,6 +3232,7 @@ main > section:nth-of-type(even) {
 .dealer-locator-list {
   display: grid;
   gap: 10px;
+  align-content: start;
 }
 
 .dealer-locator-list-head {
@@ -3283,13 +3284,90 @@ main > section:nth-of-type(even) {
 .dealer-locator-option strong {
   font-family: "Barlow Condensed", sans-serif;
   font-style: italic;
-  font-size: 1.34rem;
+  font-size: 1.08rem;
   line-height: 1;
 }
 
 .dealer-locator-option span {
   color: var(--cc-muted);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
+}
+
+.dealer-locator-option-phone {
+  color: rgba(242, 193, 125, 0.82);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+/* ─── Search ────────────────────────────────────────────── */
+.dealer-locator-search {
+  display: grid;
+  gap: 6px;
+}
+
+.dealer-locator-search-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.dealer-locator-search-input {
+  flex: 1;
+  min-height: 40px;
+  padding: 0 12px;
+  border: 1px solid rgba(237, 232, 225, 0.12);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--cc-text);
+  font-family: "Barlow", sans-serif;
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color 180ms ease;
+}
+
+.dealer-locator-search-input:focus {
+  border-color: rgba(224, 123, 26, 0.5);
+}
+
+.dealer-locator-search-input::placeholder {
+  color: var(--cc-muted);
+}
+
+.dealer-locator-search-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(237, 232, 225, 0.12);
+  border-radius: 8px;
+  background: rgba(224, 123, 26, 0.14);
+  color: var(--cc-orange);
+  cursor: pointer;
+  transition: background 180ms ease, border-color 180ms ease;
+}
+
+.dealer-locator-search-btn:hover {
+  background: rgba(224, 123, 26, 0.26);
+  border-color: rgba(224, 123, 26, 0.36);
+}
+
+.dealer-locator-search-btn svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.dealer-locator-search-hint {
+  margin: 0;
+  min-height: 1em;
+  color: var(--cc-muted);
+  font-size: 0.8rem;
 }
 
 .dealer-map-fallback {
@@ -5213,20 +5291,51 @@ main > section:nth-of-type(even) {
 
     <main>
 
-      <!-- ─── Page Hero ──────────────────────────────────────────── -->
-      <section class="page-hero page-hero-dealers" data-comment="dealers-hero-section">
+      <!-- ─── Dealer Locator ────────────────────────────────────── -->
+      <section class="dealer-locator-section" data-comment="dealers-locator-section" id="dealer-locator">
         <div class="container">
-          <div class="page-hero-inner">
-            <p class="eyebrow" data-comment="dealers-hero-eyebrow">Authorized Dealers</p>
-            <h1 data-comment="dealers-hero-heading">Find Cowcatcher Equipment Near You.</h1>
-            <p class="hero-text" data-comment="dealers-hero-text">
-              Our dealer network connects livestock producers across Canada with
-              trusted local support, equipment inventory, and hands-on help.
+          <div class="section-intro dealer-locator-intro reveal">
+            <p class="eyebrow" data-comment="dealers-locator-eyebrow">Dealer Locator</p>
+            <h1 data-comment="dealers-locator-heading">Explore Dealers Across Canada</h1>
+            <p class="section-text">
+              Use the interactive map to compare authorized dealers across Canada.
+              Click any location marker to open the dealer details, service region,
+              and direct contact options.
             </p>
-            <div class="page-hero-actions">
-              <a class="button button-primary" href="#dealer-locator" data-comment="dealers-hero-cta-find" data-component="button">Find Dealer</a>
-              <button class="button button-outline" type="button" data-dealer-modal-open data-comment="dealers-hero-cta-become" data-component="button">Become a Dealer</button>
+          </div>
+
+          <div class="dealer-locator-grid reveal">
+            <div class="dealer-locator-map-shell frame-cut" data-comment="dealers-map-shell">
+              <div
+                class="dealer-map" data-comment="dealers-map"
+                id="dealer-map"
+                role="region"
+                aria-label="Map showing Cowcatcher dealer locations across Canada"
+              ></div>
             </div>
+
+            <aside class="dealer-locator-panel frame-cut" data-comment="dealers-panel" aria-labelledby="dealer-locator-detail-title">
+              <div class="frame-surface">
+                <div class="dealer-locator-search" data-comment="dealers-search">
+                  <div class="dealer-locator-search-row">
+                    <input
+                      type="text"
+                      id="dealer-search-input"
+                      class="dealer-locator-search-input"
+                      placeholder="City, province or postal code…"
+                      aria-label="Search dealers by city or province"
+                      autocomplete="off"
+                    />
+                    <button class="dealer-locator-search-btn" type="button" aria-label="Search dealers">
+                      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                    </button>
+                  </div>
+                  <p class="dealer-locator-search-hint" id="dealer-search-hint"></p>
+                </div>
+                <div class="dealer-locator-detail" data-comment="dealers-detail" id="dealer-locator-detail"></div>
+                <div class="dealer-locator-list" data-comment="dealers-list" id="dealer-locator-list"></div>
+              </div>
+            </aside>
           </div>
         </div>
       </section>
@@ -5247,6 +5356,38 @@ main > section:nth-of-type(even) {
 
             <div class="dealer-card">
               <div class="dealer-card-head">
+                <h4>Diamond E Cattle Co.</h4>
+              </div>
+              <div class="dealer-meta">
+                <div class="dealer-meta-row">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
+                    <circle cx="12" cy="9" r="2.5"></circle>
+                  </svg>
+                  Red Deer County, AB
+                </div>
+                <div class="dealer-meta-row">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  <a href="mailto:john@diamondecattle.ca">john@diamondecattle.ca</a>
+                </div>
+                <div class="dealer-meta-row">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.13 1 .37 1.97.72 2.9a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.16 6.16l.96-.96a2 2 0 0 1 2.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0 1 22 16.92z"></path>
+                  </svg>
+                  403.588.0450
+                </div>
+              </div>
+              <span class="dealer-auth-badge">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                Authorized Cowcatcher Dealer
+              </span>
+            </div>
+
+            <div class="dealer-card">
+              <div class="dealer-card-head">
                 <h4>Weber's Farm Service</h4>
                 <span class="dealer-badge-featured">Featured</span>
               </div>
@@ -5256,21 +5397,20 @@ main > section:nth-of-type(even) {
                     <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
                     <circle cx="12" cy="9" r="2.5"></circle>
                   </svg>
-                  Drayton, ON
+                  Elmira, ON
+                </div>
+                <div class="dealer-meta-row">
+                  <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+                    <polyline points="22,6 12,13 2,6"></polyline>
+                  </svg>
+                  <a href="mailto:sales@webersfs.com">sales@webersfs.com</a>
                 </div>
                 <div class="dealer-meta-row">
                   <svg viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.13 1 .37 1.97.72 2.9a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.16 6.16l.96-.96a2 2 0 0 1 2.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0 1 22 16.92z"></path>
                   </svg>
-                  519-489-4242
-                </div>
-                <div class="dealer-meta-row">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <line x1="2" y1="12" x2="22" y2="12"></line>
-                    <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path>
-                  </svg>
-                  <a href="https://www.webersfs.com" target="_blank" rel="noopener">webersfs.com</a>
+                  519.669.8884
                 </div>
               </div>
               <span class="dealer-auth-badge">
@@ -5279,166 +5419,6 @@ main > section:nth-of-type(even) {
               </span>
             </div>
 
-            <div class="dealer-card">
-              <div class="dealer-card-head">
-                <h4>Southgate Farm Supply</h4>
-              </div>
-              <div class="dealer-meta">
-                <div class="dealer-meta-row">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
-                    <circle cx="12" cy="9" r="2.5"></circle>
-                  </svg>
-                  Dundalk, ON
-                </div>
-                <div class="dealer-meta-row">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.13 1 .37 1.97.72 2.9a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.16 6.16l.96-.96a2 2 0 0 1 2.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                  519.923.0000
-                </div>
-              </div>
-              <span class="dealer-auth-badge">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                Authorized Cowcatcher Dealer
-              </span>
-            </div>
-
-            <div class="dealer-card">
-              <div class="dealer-card-head">
-                <h4>Prairie Cattle Equipment</h4>
-              </div>
-              <div class="dealer-meta">
-                <div class="dealer-meta-row">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
-                    <circle cx="12" cy="9" r="2.5"></circle>
-                  </svg>
-                  Lethbridge, AB
-                </div>
-                <div class="dealer-meta-row">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.13 1 .37 1.97.72 2.9a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.16 6.16l.96-.96a2 2 0 0 1 2.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                  403.555.0130
-                </div>
-              </div>
-              <span class="dealer-auth-badge">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                Authorized Cowcatcher Dealer
-              </span>
-            </div>
-
-            <div class="dealer-card">
-              <div class="dealer-card-head">
-                <h4>Valley Livestock Supply</h4>
-              </div>
-              <div class="dealer-meta">
-                <div class="dealer-meta-row">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
-                    <circle cx="12" cy="9" r="2.5"></circle>
-                  </svg>
-                  Truro, NS
-                </div>
-                <div class="dealer-meta-row">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.13 1 .37 1.97.72 2.9a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.16 6.16l.96-.96a2 2 0 0 1 2.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                  902.555.0175
-                </div>
-              </div>
-              <span class="dealer-auth-badge">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                Authorized Cowcatcher Dealer
-              </span>
-            </div>
-
-            <div class="dealer-card">
-              <div class="dealer-card-head">
-                <h4>Heartland Farm Systems</h4>
-              </div>
-              <div class="dealer-meta">
-                <div class="dealer-meta-row">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
-                    <circle cx="12" cy="9" r="2.5"></circle>
-                  </svg>
-                  Brandon, MB
-                </div>
-                <div class="dealer-meta-row">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.13 1 .37 1.97.72 2.9a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.16 6.16l.96-.96a2 2 0 0 1 2.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                  204.555.0122
-                </div>
-              </div>
-              <span class="dealer-auth-badge">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                Authorized Cowcatcher Dealer
-              </span>
-            </div>
-
-            <div class="dealer-card">
-              <div class="dealer-card-head">
-                <h4>Cariboo Ranching Supplies</h4>
-              </div>
-              <div class="dealer-meta">
-                <div class="dealer-meta-row">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"></path>
-                    <circle cx="12" cy="9" r="2.5"></circle>
-                  </svg>
-                  Williams Lake, BC
-                </div>
-                <div class="dealer-meta-row">
-                  <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.2h3a2 2 0 0 1 2 1.72c.13 1 .37 1.97.72 2.9a2 2 0 0 1-.45 2.11L7.91 8.9a16 16 0 0 0 6.16 6.16l.96-.96a2 2 0 0 1 2.11-.45c.93.35 1.9.59 2.9.72A2 2 0 0 1 22 16.92z"></path>
-                  </svg>
-                  250.555.0149
-                </div>
-              </div>
-              <span class="dealer-auth-badge">
-                <svg viewBox="0 0 24 24" aria-hidden="true"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-                Authorized Cowcatcher Dealer
-              </span>
-            </div>
-
-          </div>
-        </div>
-      </section>
-
-      <div class="accent-strip"></div>
-
-      <!-- ─── Dealer Locator ────────────────────────────────────── -->
-      <section class="dealer-locator-section" data-comment="dealers-locator-section" id="dealer-locator">
-        <div class="container">
-          <div class="section-intro dealer-locator-intro reveal">
-            <p class="eyebrow" data-comment="dealers-locator-eyebrow">Dealer Locator</p>
-            <h2 data-comment="dealers-locator-heading">Explore Dealers Across Canada</h2>
-            <p class="section-text">
-              Use the interactive map to compare authorized dealers across Canada.
-              Click any location marker to open the dealer details, service region,
-              and direct contact options.
-            </p>
-          </div>
-
-          <div class="dealer-locator-grid reveal">
-            <div class="dealer-locator-map-shell frame-cut" data-comment="dealers-map-shell">
-              <div
-                class="dealer-map" data-comment="dealers-map"
-                id="dealer-map"
-                role="region"
-                aria-label="Map showing Cowcatcher dealer locations across Canada"
-              ></div>
-            </div>
-
-            <aside class="dealer-locator-panel frame-cut" data-comment="dealers-panel" aria-labelledby="dealer-locator-detail-title">
-              <div class="frame-surface">
-                <div class="dealer-locator-detail" data-comment="dealers-detail" id="dealer-locator-detail"></div>
-                <div class="dealer-locator-list" data-comment="dealers-list" id="dealer-locator-list"></div>
-              </div>
-            </aside>
           </div>
         </div>
       </section>
@@ -5472,8 +5452,8 @@ main > section:nth-of-type(even) {
                 arrange a demo, and handle delivery and setup.
               </p>
               <p>
-                <strong>519-489-4242</strong> &mdash;
-                <a href="https://www.webersfs.com" target="_blank" rel="noopener">webersfs.com</a>
+                <strong>519.669.8884</strong> &mdash;
+                <a href="mailto:sales@webersfs.com">sales@webersfs.com</a>
               </p>
             </div>
           </div>
@@ -6565,14 +6545,30 @@ document.addEventListener("visibilitychange", () => {
 
   const dealers = [
     {
+      id: "diamond-e",
+      name: "Diamond E Cattle Co.",
+      city: "Red Deer County",
+      province: "AB",
+      lat: 52.27,
+      lng: -113.8,
+      phone: "403.588.0450",
+      phoneHref: "4035880450",
+      email: "john@diamondecattle.ca",
+      region: "Central Alberta and surrounding cattle operations",
+      note:
+        "Authorized Cowcatcher dealer serving central Alberta producers with equipment, support, and hands-on guidance for cattle handling systems.",
+      specialties: ["Portable Units", "Chutes", "Headgates"],
+    },
+    {
       id: "webers",
       name: "Weber's Farm Service",
-      city: "Drayton",
+      city: "Elmira",
       province: "ON",
-      lat: 43.7493,
-      lng: -80.6048,
-      phone: "519-489-4242",
-      phoneHref: "18008254961",
+      lat: 43.6,
+      lng: -80.56,
+      phone: "519.669.8884",
+      phoneHref: "5196698884",
+      email: "sales@webersfs.com",
       website: "https://www.webersfs.com",
       websiteLabel: "webersfs.com",
       featured: true,
@@ -6580,76 +6576,6 @@ document.addEventListener("visibilitychange", () => {
       note:
         "Primary Cowcatcher distributor in Ontario, supporting system planning, demos, delivery, and install coordination.",
       specialties: ["Portable Units", "Chutes", "Alley Systems"],
-    },
-    {
-      id: "southgate",
-      name: "Southgate Farm Supply",
-      city: "Dundalk",
-      province: "ON",
-      lat: 44.1707,
-      lng: -80.3938,
-      phone: "519.923.0000",
-      phoneHref: "5199230000",
-      region: "Grey County, Wellington County, and nearby cattle operations",
-      note:
-        "Local support partner for Ontario producers looking for modular equipment, replacements, and dependable follow-up service.",
-      specialties: ["Portable Units", "Headgates", "Alley Components"],
-    },
-    {
-      id: "prairie",
-      name: "Prairie Cattle Equipment",
-      city: "Lethbridge",
-      province: "AB",
-      lat: 49.6942,
-      lng: -112.8328,
-      phone: "403.555.0130",
-      phoneHref: "4035550130",
-      region: "Southern Alberta and prairie ranch operations",
-      note:
-        "Supports larger western yards with hydraulic squeeze chutes, headgates, and layout planning for expansion projects.",
-      specialties: ["Hydraulic Chutes", "Headgates", "Yard Planning"],
-    },
-    {
-      id: "valley",
-      name: "Valley Livestock Supply",
-      city: "Truro",
-      province: "NS",
-      lat: 45.3648,
-      lng: -63.2792,
-      phone: "902.555.0175",
-      phoneHref: "9025550175",
-      region: "Nova Scotia and Atlantic livestock operations",
-      note:
-        "Focused on dependable everyday equipment packages, add-on accessories, and east coast customer support.",
-      specialties: ["Portable Units", "Accessories", "Service Support"],
-    },
-    {
-      id: "heartland",
-      name: "Heartland Farm Systems",
-      city: "Brandon",
-      province: "MB",
-      lat: 49.8485,
-      lng: -99.9501,
-      phone: "204.555.0122",
-      phoneHref: "2045550122",
-      region: "Manitoba cattle country and surrounding prairie routes",
-      note:
-        "Helps producers spec full handling systems with chutes, alley components, and install-ready site planning.",
-      specialties: ["Chutes", "Alleys", "Full-System Installs"],
-    },
-    {
-      id: "cariboo",
-      name: "Cariboo Ranching Supplies",
-      city: "Williams Lake",
-      province: "BC",
-      lat: 52.1415,
-      lng: -122.1417,
-      phone: "250.555.0149",
-      phoneHref: "2505550149",
-      region: "Central British Columbia and ranch operations across the Cariboo",
-      note:
-        "Supports ranch outfitting with portable units, headgates, and practical handling upgrades built for remote yards.",
-      specialties: ["Portable Units", "Headgates", "Ranch Outfitting"],
     },
   ];
 
@@ -6713,6 +6639,15 @@ document.addEventListener("visibilitychange", () => {
           `,
           `${escapeHtml(dealer.city)}, ${escapeHtml(dealer.province)}`
         )}
+        ${dealer.email ? buildMetaRow(
+          `
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+              <polyline points="22,6 12,13 2,6"></polyline>
+            </svg>
+          `,
+          `<a href="mailto:${escapeHtml(dealer.email)}">${escapeHtml(dealer.email)}</a>`
+        ) : ""}
         ${buildMetaRow(
           `
             <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -6757,13 +6692,13 @@ document.addEventListener("visibilitychange", () => {
     `;
   }
 
-  function renderList() {
+  function renderList(dealerSet) {
+    const list = dealerSet || dealers;
     listElement.innerHTML = `
       <div class="dealer-locator-list-head">
         <h4>All dealer locations</h4>
-        <span>Jump to a dealer</span>
       </div>
-      ${dealers
+      ${list
         .map(
           (dealer) => `
             <button
@@ -6774,9 +6709,7 @@ document.addEventListener("visibilitychange", () => {
               data-dealer-option="${dealer.id}"
             >
               <strong>${escapeHtml(dealer.name)}</strong>
-              <span>${escapeHtml(dealer.city)}, ${escapeHtml(
-                dealer.province
-              )}</span>
+              <span>${escapeHtml(dealer.city)}, ${escapeHtml(dealer.province)}</span>
             </button>
           `
         )
@@ -6789,6 +6722,39 @@ document.addEventListener("visibilitychange", () => {
       });
     });
   }
+
+  function filterDealers(query) {
+    const q = query.toLowerCase().trim();
+    if (!q) return dealers;
+    return dealers.filter(
+      (d) =>
+        d.name.toLowerCase().includes(q) ||
+        d.city.toLowerCase().includes(q) ||
+        d.province.toLowerCase().includes(q)
+    );
+  }
+
+  (function initSearch() {
+    const searchInput = document.getElementById("dealer-search-input");
+    const searchHint = document.getElementById("dealer-search-hint");
+    if (!searchInput) return;
+
+    searchInput.addEventListener("input", () => {
+      const filtered = filterDealers(searchInput.value);
+      if (searchInput.value.trim()) {
+        searchHint.textContent = filtered.length
+          ? `${filtered.length} dealer${filtered.length !== 1 ? "s" : ""} found`
+          : "No dealers found";
+      } else {
+        searchHint.textContent = "";
+      }
+      const listToShow = filtered.length ? filtered : dealers;
+      renderList(listToShow);
+      if (filtered.length && !filtered.find((d) => d.id === activeDealerId)) {
+        selectDealer(filtered[0].id);
+      }
+    });
+  })();
 
   function setActiveMarker(id) {
     markerMap.forEach((marker, markerId) => {

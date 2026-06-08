@@ -11161,11 +11161,6 @@ main > section:nth-of-type(even) {
               Account Details
               <svg class="nav-arrow" viewBox="0 0 24 24" width="14" height="14"><path d="M9 18l6-6-6-6" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
             </button>
-            <button class="account-nav-item" data-tab="payment" data-comment="account-nav-link-payment">
-              <svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path></svg>
-              Payment Methods
-              <svg class="nav-arrow" viewBox="0 0 24 24" width="14" height="14"><path d="M9 18l6-6-6-6" stroke-width="2" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
-            </button>
             <button class="account-nav-item" data-tab="orders" data-comment="account-nav-link-orders">
               <svg viewBox="0 0 24 24"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"></path><rect x="9" y="3" width="6" height="4" rx="1"></rect><path d="M9 12h6M9 16h4"></path></svg>
               Your Orders
@@ -11233,76 +11228,6 @@ main > section:nth-of-type(even) {
                 <button type="submit" class="button button-primary" data-comment="account-profile-save" data-component="button">Update</button>
               </div>
             </form>
-          </div>
-
-          <!-- Payment Methods -->
-          <div class="account-panel" id="panel-payment">
-            <h1 class="panel-heading" data-comment="account-payment-heading">Payment Methods</h1>
-            <p class="panel-sub" data-comment="account-payment-subtitle">Manage your payment cards</p>
-
-            <div class="payment-header-row" data-comment="account-payment-default-label">
-              <p class="payment-section-label" style="margin:0">Default card: **** 4242</p>
-              <span class="payment-drag-hint" data-comment="account-payment-drag-hint">Drag to reorder</span>
-            </div>
-            <div class="card-list" data-comment="account-payment-default-list">
-              <div class="card-item is-default" data-comment="account-payment-card-1">
-                <span class="card-drag-handle" data-comment="account-payment-card-1-handle">
-                  <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="9" cy="5" r="1.2" fill="currentColor"/><circle cx="15" cy="5" r="1.2" fill="currentColor"/><circle cx="9" cy="12" r="1.2" fill="currentColor"/><circle cx="15" cy="12" r="1.2" fill="currentColor"/><circle cx="9" cy="19" r="1.2" fill="currentColor"/><circle cx="15" cy="19" r="1.2" fill="currentColor"/></svg>
-                </span>
-                <div class="card-brand visa" data-comment="account-payment-card-1-brand">VISA</div>
-                <span class="card-number" data-comment="account-payment-card-1-number">•••• •••• •••• 4242</span>
-                <button class="card-delete" aria-label="Remove card" data-comment="account-payment-card-1-delete">
-                  <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v6M14 11v6"></path><path d="M9 6V4h6v2"></path></svg>
-                </button>
-              </div>
-            </div>
-
-            <p class="payment-section-label" data-comment="account-payment-other-label">Other cards</p>
-            <div class="card-list" data-comment="account-payment-other-list">
-              <div class="card-item" data-comment="account-payment-card-2">
-                <span class="card-drag-handle" data-comment="account-payment-card-2-handle">
-                  <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="9" cy="5" r="1.2" fill="currentColor"/><circle cx="15" cy="5" r="1.2" fill="currentColor"/><circle cx="9" cy="12" r="1.2" fill="currentColor"/><circle cx="15" cy="12" r="1.2" fill="currentColor"/><circle cx="9" cy="19" r="1.2" fill="currentColor"/><circle cx="15" cy="19" r="1.2" fill="currentColor"/></svg>
-                </span>
-                <div class="card-brand mastercard" data-comment="account-payment-card-2-brand">MC</div>
-                <span class="card-number" data-comment="account-payment-card-2-number">•••• •••• •••• 0089</span>
-                <button class="card-delete" aria-label="Remove card" data-comment="account-payment-card-2-delete">
-                  <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v6M14 11v6"></path><path d="M9 6V4h6v2"></path></svg>
-                </button>
-              </div>
-              <div class="card-item" data-comment="account-payment-card-3">
-                <span class="card-drag-handle" data-comment="account-payment-card-3-handle">
-                  <svg viewBox="0 0 24 24" width="16" height="16"><circle cx="9" cy="5" r="1.2" fill="currentColor"/><circle cx="15" cy="5" r="1.2" fill="currentColor"/><circle cx="9" cy="12" r="1.2" fill="currentColor"/><circle cx="15" cy="12" r="1.2" fill="currentColor"/><circle cx="9" cy="19" r="1.2" fill="currentColor"/><circle cx="15" cy="19" r="1.2" fill="currentColor"/></svg>
-                </span>
-                <div class="card-brand mastercard" data-comment="account-payment-card-3-brand">MC</div>
-                <span class="card-number" data-comment="account-payment-card-3-number">•••• •••• •••• 0045</span>
-                <button class="card-delete" aria-label="Remove card" data-comment="account-payment-card-3-delete">
-                  <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6l-1 14H6L5 6"></path><path d="M10 11v6M14 11v6"></path><path d="M9 6V4h6v2"></path></svg>
-                </button>
-              </div>
-            </div>
-
-            <div class="add-card-section" data-comment="account-payment-add-section">
-              <h2 class="add-card-title" data-comment="account-payment-add-title">Add new card:</h2>
-              <form data-component="form">
-                <div class="form-grid">
-                  <div class="form-group full" data-comment="account-payment-add-number">
-                    <label class="form-label" for="card-number" data-comment="account-payment-add-number-label">Card number</label>
-                    <input class="form-input" id="card-number" type="text" placeholder="4141 3893 1093 5901" data-comment="account-payment-add-number-input" />
-                  </div>
-                  <div class="form-group" data-comment="account-payment-add-expiry">
-                    <label class="form-label" for="expiry" data-comment="account-payment-add-expiry-label">Expiry</label>
-                    <input class="form-input" id="expiry" type="text" placeholder="MM / YY" data-comment="account-payment-add-expiry-input" />
-                  </div>
-                  <div class="form-group" data-comment="account-payment-add-cvc">
-                    <label class="form-label" for="cvc" data-comment="account-payment-add-cvc-label">CVC</label>
-                    <input class="form-input" id="cvc" type="text" placeholder="· · ·" data-comment="account-payment-add-cvc-input" />
-                  </div>
-                </div>
-                <div class="form-actions">
-                  <button type="submit" class="button button-primary" data-comment="account-payment-add-btn">+ Add card</button>
-                </div>
-              </form>
-            </div>
           </div>
 
           <!-- Your Orders -->

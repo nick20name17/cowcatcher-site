@@ -10244,62 +10244,12 @@ main > section:nth-of-type(even) {
       .cart-header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; gap: 24px; }
       .page-title { font-family: "Barlow Condensed", sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; font-style: italic; margin: 0; }
 
-      .checkout-steps { display: flex; align-items: center; }
-      .cs-step { display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 72px; }
-      .cs-dot {
-        width: 40px; height: 40px; border-radius: 50%;
-        background: var(--cc-surface-alt); border: 2px solid var(--cc-border);
-        display: flex; align-items: center; justify-content: center;
-        color: var(--cc-muted); transition: all 200ms ease; position: relative;
-      }
-      .cs-dot svg { width: 17px; height: 17px; stroke: currentColor; fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-      .cs-icon { display: flex; }
-      .cs-check { display: none; }
-      .cs-step.is-active .cs-dot { background: var(--cc-orange); border-color: var(--cc-orange); color: #151311; }
-      .cs-step.is-done .cs-dot { background: var(--cc-orange); border-color: var(--cc-orange); color: #151311; }
-      .cs-step.is-done .cs-icon { display: none; }
-      .cs-step.is-done .cs-check { display: flex; }
-      .cs-label { font-size: 0.76rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cc-muted); }
-      .cs-step.is-active .cs-label, .cs-step.is-done .cs-label { color: var(--cc-text); }
-      .cs-line { flex: 1; min-width: 56px; height: 2px; background: var(--cc-border); margin-bottom: 22px; transition: background 200ms ease; }
-      .cs-line.is-done { background: var(--cc-orange); }
-
-      /* ── Panels ── */
+/* ── Panels ── */
       .step-panel { display: none; }
       .step-panel.is-active { display: block; }
 
       /* ── Empty state ── */
-      .cart-empty { text-align: center; padding: 80px 0; }
-      .empty-icon-wrap { width: 80px; height: 80px; border-radius: 50%; background: var(--cc-surface); border: 1px solid var(--cc-border); display: flex; align-items: center; justify-content: center; margin: 0 auto 28px; }
-      .empty-icon-wrap svg { width: 32px; height: 32px; stroke: var(--cc-muted); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-      .cart-empty h2 { font-family: "Barlow Condensed", sans-serif; font-size: 2rem; font-weight: 800; font-style: italic; margin: 0 0 12px; }
-      .cart-empty p { color: var(--cc-muted); margin: 0 0 28px; line-height: 1.7; }
-
-      /* ── Cart table ── */
-      .cart-table { width: 100%; border-collapse: collapse; }
-      .cart-table th { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--cc-muted); text-align: left; padding: 0 0 14px; border-bottom: 1px solid var(--cc-border); }
-      .cart-table th:nth-child(2), .cart-table th:nth-child(3), .cart-table th:nth-child(4) { text-align: center; }
-      .cart-table th:last-child { width: 40px; }
-      .cart-table td { padding: 20px 0; border-bottom: 1px solid var(--cc-border); vertical-align: middle; }
-      .cart-table td:nth-child(2), .cart-table td:nth-child(4) { text-align: center; font-weight: 600; }
-      .cart-table td:nth-child(3) { text-align: center; }
-      .cart-product-cell { display: flex; align-items: center; gap: 16px; }
-      .cart-product-img { width: 52px; height: 52px; border-radius: 6px; background: var(--cc-surface-alt); overflow: hidden; flex-shrink: 0; }
-      .cart-product-img img { width: 100%; height: 100%; object-fit: cover; }
-      .cart-product-name { font-weight: 600; font-size: 0.95rem; }
-      .cart-product-meta { font-size: 0.78rem; color: var(--cc-muted); margin-top: 4px; max-width: 420px; line-height: 1.35; }
-      .qty-stepper { display: inline-flex; align-items: center; border: 1px solid var(--cc-border); border-radius: var(--radius); overflow: hidden; }
-      .qty-btn { width: 34px; height: 34px; background: none; border: none; cursor: pointer; color: var(--cc-text); font-size: 1.1rem; display: flex; align-items: center; justify-content: center; transition: background 140ms ease; }
-      .qty-btn:hover { background: var(--cc-surface-alt); }
-      .qty-value { width: 36px; text-align: center; font-weight: 600; border-left: 1px solid var(--cc-border); border-right: 1px solid var(--cc-border); line-height: 34px; }
-      .btn-remove-item { background: none; border: none; cursor: pointer; color: var(--cc-muted); width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; border-radius: 4px; transition: color 140ms, background 140ms; font-size: 1.2rem; }
-      .btn-remove-item:hover { color: #e05555; background: rgba(224, 85, 85, 0.1); }
-      .cart-footer-row { display: flex; align-items: center; justify-content: flex-end; gap: 24px; padding: 24px 0 0; }
-      .cart-total-label { margin-right: auto; font-weight: 600; }
-      .cart-total-label span { color: var(--cc-muted); font-weight: 400; font-size: 0.9rem; }
-      .cart-grand-total { font-size: 1.3rem; font-weight: 700; }
-
-      /* ── Checkout 2-col layout ── */
+/* ── Checkout 2-col layout ── */
       .checkout-layout { display: grid; grid-template-columns: 1fr 360px; gap: 32px; align-items: start; }
       .checkout-card { background: var(--cc-surface); border: 1px solid var(--cc-border); border-radius: var(--radius); padding: 28px; margin-bottom: 20px; }
       .checkout-card-title { font-family: "Barlow Condensed", sans-serif; font-size: 1.15rem; font-weight: 700; font-style: italic; margin: 0 0 20px; }
@@ -10335,27 +10285,10 @@ main > section:nth-of-type(even) {
       .sidebar-actions-row { display: flex; gap: 10px; }
       .sidebar-actions-row .button { flex: 1; min-height: 44px; font-size: 0.85rem; }
 
-      /* ── Payment methods ── */
-      .payment-method-item { display: flex; align-items: center; gap: 14px; padding: 14px 18px; border: 1px solid var(--cc-border); border-radius: var(--radius); cursor: pointer; margin-bottom: 10px; transition: border-color 140ms; }
-      .payment-method-item.is-selected { border-color: var(--cc-orange); }
-      .payment-method-item input[type="radio"] { accent-color: var(--cc-orange); cursor: pointer; }
-      .card-brand { width: 42px; height: 28px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 800; flex-shrink: 0; }
-      .card-brand.visa { background: #1a1f71; color: #fff; }
-      .card-brand.mc { background: #252525; position: relative; overflow: hidden; }
-      .card-brand.mc::before, .card-brand.mc::after { content: ""; position: absolute; width: 18px; height: 18px; border-radius: 50%; top: 50%; transform: translateY(-50%); }
-      .card-brand.mc::before { background: #eb001b; left: 6px; }
-      .card-brand.mc::after { background: #f79e1b; right: 6px; mix-blend-mode: multiply; }
-      .card-num { flex: 1; font-size: 0.95rem; letter-spacing: 0.06em; }
-      .card-default-tag { font-size: 0.78rem; color: var(--cc-muted); }
-      .btn-add-card { width: 100%; padding: 14px; text-align: center; border: 1px solid var(--cc-border); border-radius: var(--radius); background: none; color: var(--cc-text); font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: border-color 140ms, color 140ms; }
-      .btn-add-card:hover { border-color: var(--cc-orange); color: var(--cc-orange); }
-
-      /* ── Payment summary sidebar ── */
-      .pay-summary-title { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--cc-muted); margin-bottom: 16px; }
-      .pay-line { display: flex; justify-content: space-between; font-size: 0.92rem; margin-bottom: 10px; color: var(--cc-muted); }
-      .pay-line strong { color: var(--cc-text); }
-      .pay-line.total { font-size: 1rem; font-weight: 700; color: var(--cc-text); margin-top: 14px; padding-top: 14px; border-top: 1px solid var(--cc-border); }
-      .pay-line.total .big { font-size: 1.5rem; font-weight: 800; }
+      /* ── Shipping method ── */
+      .shipping-method-item { display: flex; align-items: center; gap: 12px; padding: 12px 16px; border: 1px solid var(--cc-border); border-radius: var(--radius); cursor: pointer; transition: border-color 140ms; }
+      .shipping-method-item.is-selected { border-color: var(--cc-orange); }
+      .shipping-method-item input[type="radio"] { accent-color: var(--cc-orange); cursor: pointer; }
 
       /* ── Order confirmation ── */
       .order-confirmation { text-align: center; padding: 80px 24px; max-width: 520px; margin: 0 auto; }
@@ -10435,74 +10368,10 @@ main > section:nth-of-type(even) {
 
         <div class="cart-header-row">
           <h1 class="page-title" id="page-title" data-comment="cart-heading" data-comment="cart-heading">Checkout</h1>
-          <div class="checkout-steps">
-            <div class="cs-step is-active" data-step="1">
-              <div class="cs-dot">
-                <span class="cs-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"></circle><circle cx="18" cy="20" r="1.5"></circle><path d="M2.5 3H5l2.1 10.2a1 1 0 0 0 1 .8h9.7a1 1 0 0 0 1-.8L21 6H6"></path></svg></span>
-                <span class="cs-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-              </div>
-              <span class="cs-label">Checkout</span>
-            </div>
-            <div class="cs-line" id="line-1"></div>
-            <div class="cs-step" data-step="2">
-              <div class="cs-dot">
-                <span class="cs-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg></span>
-                <span class="cs-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-              </div>
-              <span class="cs-label">Shipping</span>
-            </div>
-            <div class="cs-line" id="line-2"></div>
-            <div class="cs-step" data-step="3">
-              <div class="cs-dot">
-                <span class="cs-icon"><svg viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"></rect><path d="M2 10h20"></path></svg></span>
-                <span class="cs-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-              </div>
-              <span class="cs-label">Payment</span>
-            </div>
-            <div class="cs-line" id="line-3"></div>
-            <div class="cs-step" data-step="4">
-              <div class="cs-dot">
-                <span class="cs-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-                <span class="cs-check"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-              </div>
-              <span class="cs-label">Complete</span>
-            </div>
-          </div>
         </div>
 
-        <!-- Step 1: Checkout -->
-        <div class="step-panel is-active" id="panel-1">
-          <div class="cart-empty" id="cart-empty" hidden data-comment="cart-empty" data-comment="cart-empty">
-            <div class="empty-icon-wrap">
-              <svg viewBox="0 0 24 24"><circle cx="9" cy="20" r="1.5"></circle><circle cx="18" cy="20" r="1.5"></circle><path d="M2.5 3H5l2.1 10.2a1 1 0 0 0 1 .8h9.7a1 1 0 0 0 1-.8L21 6H6"></path></svg>
-            </div>
-            <h2>Your cart is empty</h2>
-            <p>Looks like you haven't added any equipment yet.<br>Browse our catalog to find what you need.</p>
-            <a class="button button-primary" href="./products.html">Browse Products</a>
-          </div>
-          <div id="cart-table-wrap" hidden data-comment="cart-items" data-comment="cart-items">
-            <table class="cart-table">
-              <thead>
-                <tr>
-                  <th>Product</th>
-                  <th>Price</th>
-                  <th>Quantity</th>
-                  <th>Total</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody id="cart-tbody"></tbody>
-            </table>
-            <div class="cart-footer-row">
-              <div class="cart-total-label">Total: <span id="cart-item-count"></span></div>
-              <div class="cart-grand-total" id="cart-grand-total">$0.00</div>
-              <button class="button button-primary" id="btn-checkout" data-comment="cart-checkout" data-component="button">Checkout &rarr;</button>
-            </div>
-          </div>
-        </div>
-
-        <!-- Step 2: Shipping -->
-        <div class="step-panel" id="panel-2">
+        <!-- Checkout form -->
+        <div class="step-panel is-active" id="panel-2">
           <div class="checkout-layout">
             <div>
               <div class="checkout-card">
@@ -10541,6 +10410,14 @@ main > section:nth-of-type(even) {
               </div>
             </div>
 
+            <div>
+              <div class="checkout-card" data-comment="cart-shipping-method">
+                <h2 class="checkout-card-title">Shipping by:</h2>
+                <label class="shipping-method-item is-selected">
+                  <input type="radio" name="shipping-method" checked />
+                  <span>Name</span>
+                </label>
+              </div>
             <aside class="checkout-sidebar" data-comment="cart-summary" data-component="card">
               <div id="sidebar-items"></div>
               <div class="form-group" style="margin-bottom:12px">
@@ -10559,15 +10436,15 @@ main > section:nth-of-type(even) {
                 <span class="sidebar-total-price" id="sidebar-total">$0.00</span>
               </div>
               <div class="sidebar-actions-row">
-                <button class="button button-outline" id="btn-back-cart" data-comment="cart-continue" data-component="button">Back to cart</button>
-                <button class="button button-primary" id="btn-to-payment">Payment &rarr;</button>
+                <button class="button button-primary" id="btn-place-order" style="width:100%">Order &rarr;</button>
               </div>
             </aside>
+            </div>
           </div>
         </div>
 
-        <!-- Step 4: Complete -->
-        <div class="step-panel" id="panel-4">
+        <!-- Step 3: Complete -->
+        <div class="step-panel" id="panel-3">
           <div class="order-confirmation" data-comment="cart-confirmation" data-comment="cart-confirmation">
             <div class="order-confirm-icon">
               <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"></polyline></svg>
@@ -10583,51 +10460,13 @@ main > section:nth-of-type(even) {
           </div>
         </div>
 
-        <!-- Step 3: Payment -->
-        <div class="step-panel" id="panel-3">
-          <div class="checkout-layout">
-            <div>
-              <div class="checkout-card">
-                <h2 class="checkout-card-title">Your Payment Methods</h2>
-                <p class="checkout-card-sub">By default, your card is the first in the list, however, if you want to select a different payment method, you can choose any other one.</p>
-                <label class="payment-method-item is-selected">
-                  <input type="radio" name="pay-method" checked />
-                  <div class="card-brand visa">VISA</div>
-                  <span class="card-num">•••• •••• •••• 6767</span>
-                  <span class="card-default-tag">Default card</span>
-                </label>
-                <label class="payment-method-item">
-                  <input type="radio" name="pay-method" />
-                  <div class="card-brand mc"></div>
-                  <span class="card-num">•••• •••• •••• 0089</span>
-                </label>
-                <label class="payment-method-item">
-                  <input type="radio" name="pay-method" />
-                  <div class="card-brand mc"></div>
-                  <span class="card-num">•••• •••• •••• 0045</span>
-                </label>
-                <button class="btn-add-card">Add other card</button>
-              </div>
-            </div>
-
-            <aside class="checkout-sidebar" data-comment="cart-summary" data-component="card">
-              <p class="pay-summary-title">Cart:</p>
-              <div class="pay-line"><span>Cart:</span><strong id="pay-subtotal">$0.00</strong></div>
-              <div class="pay-line"><span>Shipping:</span><strong>+ $25.00</strong></div>
-              <div class="pay-line"><span>Tax:</span><strong id="pay-tax">+ $0.00</strong></div>
-              <div class="pay-line total"><span>Total:</span><span class="big" id="pay-total">$0.00</span></div>
-              <button class="button button-primary" style="width:100%;margin-top:16px" id="btn-pay-now" data-comment="cart-pay-now" data-component="button">Pay now</button>
-            </aside>
-          </div>
-        </div>
-
       </div>
     </main>
 
     <div class="toast" id="toast">
       <div class="toast-title">
         <div class="toast-icon"><svg viewBox="0 0 12 10"><polyline points="1 5 4 8 11 1" /></svg></div>
-        Payment successful! Your order has been placed.
+        Order placed successfully.
       </div>
       <div class="toast-sub" id="toast-sub"></div>
     </div>
@@ -11258,60 +11097,16 @@ document.addEventListener("visibilitychange", () => {
 
       // ── Step management ──────────────────────────────────────
       let step = 1;
-      const TITLES = ['Checkout', 'Shipping', 'Payment', 'Complete'];
+      const TITLES = ['Checkout', 'Checkout', 'Complete'];
 
       function goTo(n) {
         step = n;
-        const panelByStep = { 1: 'panel-1', 2: 'panel-2', 3: 'panel-3', 4: 'panel-4' };
+        const panelByStep = { 1: 'panel-1', 2: 'panel-2', 3: 'panel-3' };
         document.querySelectorAll('.step-panel').forEach((p) => {
           p.classList.toggle('is-active', p.id === panelByStep[n]);
         });
-        document.querySelectorAll('.cs-step').forEach((s, i) => {
-          const sn = i + 1;
-          s.classList.toggle('is-done', sn < n);
-          s.classList.toggle('is-active', sn === n);
-        });
-        ['line-1','line-2','line-3'].forEach((id, i) => {
-          document.getElementById(id)?.classList.toggle('is-done', n > i + 1);
-        });
         document.getElementById('page-title').textContent = TITLES[n - 1];
         if (n === 2) renderSidebar();
-        if (n === 3) renderPaySidebar();
-      }
-
-      // ── Render cart table ─────────────────────────────────────
-      function renderCart() {
-        const cart = getCart();
-        const empty = document.getElementById('cart-empty');
-        const wrap = document.getElementById('cart-table-wrap');
-
-        if (cart.length === 0) {
-          empty.hidden = false; wrap.hidden = true; return;
-        }
-        empty.hidden = true; wrap.hidden = false;
-
-        document.getElementById('cart-tbody').innerHTML = cart.map(item => {
-          const p = getProductSnapshot(item);
-          const opt = p.optionsLine ? `<div class="cart-product-meta">${p.optionsLine}</div>` : '';
-          return `<tr data-id="${item.id}">
-            <td><a class="cart-product-cell" href="${p.url}">
-              <div class="cart-product-img">${p.img ? `<img src="${p.img}" alt="${p.name}">` : ''}</div>
-              <span><span class="cart-product-name">${p.name}</span>${opt}</span>
-            </a></td>
-            <td>${fmt(p.price)}</td>
-            <td><div class="qty-stepper">
-              <button class="qty-btn btn-dec" data-id="${item.id}">−</button>
-              <span class="qty-value">${item.qty}</span>
-              <button class="qty-btn btn-inc" data-id="${item.id}">+</button>
-            </div></td>
-            <td>${fmt(p.price * item.qty)}</td>
-            <td><button class="btn-remove-item" data-id="${item.id}">×</button></td>
-          </tr>`;
-        }).join('');
-
-        const { subtotal, qty } = calcTotals();
-        document.getElementById('cart-item-count').textContent = `(${qty} item${qty !== 1 ? 's' : ''})`;
-        document.getElementById('cart-grand-total').textContent = fmt(subtotal);
       }
 
       // ── Render shipping sidebar ───────────────────────────────
@@ -11329,52 +11124,14 @@ document.addEventListener("visibilitychange", () => {
         document.getElementById('sidebar-total').textContent = fmt(subtotal);
       }
 
-      // ── Render payment sidebar ────────────────────────────────
-      function renderPaySidebar() {
-        const { subtotal, tax, total } = calcTotals();
-        document.getElementById('pay-subtotal').textContent = fmt(subtotal);
-        document.getElementById('pay-tax').textContent = '+ ' + fmt(tax);
-        document.getElementById('pay-total').textContent = fmt(total);
-      }
-
-      // ── Cart table interactions ───────────────────────────────
-      document.getElementById('panel-1').addEventListener('click', e => {
-        const btn = e.target.closest('[data-id]');
-        if (!btn) return;
-        const cart = getCart();
-        const idx = cart.findIndex(i => i.id === btn.dataset.id);
-        if (idx === -1) return;
-        if (btn.classList.contains('btn-inc')) cart[idx].qty++;
-        else if (btn.classList.contains('btn-dec')) { if (cart[idx].qty > 1) cart[idx].qty--; else cart.splice(idx, 1); }
-        else if (btn.classList.contains('btn-remove-item')) cart.splice(idx, 1);
-        saveCart(cart); updateBadge(); renderCart();
-      });
-
-      // ── Navigation ────────────────────────────────────────────
-      document.getElementById('btn-checkout').addEventListener('click', () => goTo(2));
-      document.getElementById('btn-back-cart').addEventListener('click', () => goTo(1));
-      document.getElementById('btn-to-payment').addEventListener('click', () => goTo(3));
-
-      // ── Payment card selection ────────────────────────────────
-      document.querySelectorAll('input[name="pay-method"]').forEach(r => {
-        r.addEventListener('change', () => {
-          document.querySelectorAll('.payment-method-item').forEach(el => {
-            el.classList.toggle('is-selected', el.querySelector('input').checked);
-          });
-        });
-      });
-
-      // ── Pay now ───────────────────────────────────────────────
-      document.getElementById('btn-pay-now').addEventListener('click', () => {
+      // ── Place order ───────────────────────────────────────────
+      document.getElementById('btn-place-order').addEventListener('click', () => {
         const orderNum = Math.floor(40000 + Math.random() * 9999);
         saveCart([]); updateBadge();
 
-        // Mark all steps done
-        document.querySelectorAll('.cs-step').forEach(s => { s.classList.remove('is-active'); s.classList.add('is-done'); });
-        ['line-1','line-2','line-3'].forEach(id => document.getElementById(id).classList.add('is-done'));
         document.getElementById('page-title').textContent = 'Complete';
         document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('is-active'));
-        document.getElementById('panel-4').classList.add('is-active');
+        document.getElementById('panel-3').classList.add('is-active');
         document.getElementById('order-confirm-num').textContent = `Order #${orderNum}`;
 
         const toast = document.getElementById('toast');
@@ -11390,7 +11147,7 @@ document.addEventListener("visibilitychange", () => {
 
       // ── Init ──────────────────────────────────────────────────
       updateBadge();
-      renderCart();
+      renderSidebar();
     
         
         </script>

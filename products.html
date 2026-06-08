@@ -5501,11 +5501,10 @@ document.querySelector('a[href="#search"]')?.addEventListener("click", (e) => {
   openSearch();
 });
 document.querySelector('a[href="#cart"]')?.addEventListener("click", (e) => {
-  if (window.CC_CART_DRAWER_ACTIVE) {
-    return;
-  }
   e.preventDefault();
-  openCart();
+  if (!window.CC_CART_DRAWER_ACTIVE) {
+    openCart();
+  }
 });
 document.querySelector('a[href="#account"]')?.addEventListener("click", (e) => {
   e.preventDefault();
