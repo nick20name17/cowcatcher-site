@@ -10241,7 +10241,10 @@ main > section:nth-of-type(even) {
       .cart-page { padding: 48px 0 80px; min-height: calc(100vh - var(--header-height) - 36px); }
 
       /* ── Steps header ── */
-      .cart-header-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 40px; gap: 24px; }
+      .cart-header-row { display: flex; flex-direction: column; align-items: flex-start; margin-bottom: 40px; gap: 16px; }
+      .back-to-cart-btn { min-height: 40px; padding: 0 16px; font-size: 0.82rem; gap: 8px; border-color: rgba(237,232,225,0.22); color: var(--cc-muted); flex-shrink: 0; }
+      .back-to-cart-btn:hover { border-color: var(--cc-orange); color: var(--cc-orange); transform: none; }
+      .back-to-cart-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
       .page-title { font-family: "Barlow Condensed", sans-serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; font-style: italic; margin: 0; }
 
 /* ── Panels ── */
@@ -10367,7 +10370,11 @@ main > section:nth-of-type(even) {
       <div class="container">
 
         <div class="cart-header-row">
-          <h1 class="page-title" id="page-title" data-comment="cart-heading" data-comment="cart-heading">Checkout</h1>
+          <button class="button button-outline back-to-cart-btn" type="button" onclick="sessionStorage.setItem('cc_reopen_cart','1');history.back();">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+            Back to Cart
+          </button>
+          <h1 class="page-title" id="page-title" data-comment="cart-heading">Checkout</h1>
         </div>
 
         <!-- Checkout form -->

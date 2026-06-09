@@ -5911,38 +5911,67 @@ main > section:nth-of-type(even) {
 }
 
 .pdp-option-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
 }
 
 .pdp-option-button {
-  display: inline-flex;
+  display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 10px;
+  width: 100%;
   min-height: 48px;
-  padding: 0 16px;
-  border: 1px solid rgba(237, 232, 225, 0.1);
+  padding: 8px 12px;
+  border: 1.5px solid rgba(237, 232, 225, 0.18);
   border-radius: 12px;
   background: transparent;
   color: rgba(237, 232, 225, 0.66);
   font: inherit;
-  text-align: center;
+  text-align: left;
   cursor: pointer;
   transition: border-color 180ms ease, color 180ms ease, background-color 180ms ease;
   position: relative;
 }
 
 .pdp-option-button.has-meta {
-  justify-content: space-between;
-  text-align: left;
+  justify-content: flex-start;
+}
+
+.pdp-option-button.has-meta .pdp-option-meta {
+  margin-left: auto;
 }
 
 .pdp-option-button.is-active {
   border-color: var(--cc-text);
   background: rgba(255, 255, 255, 0.04);
   color: var(--cc-text);
+}
+
+.pdp-option-radio {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(237, 232, 225, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.pdp-option-button.is-active .pdp-option-radio {
+  border-color: var(--cc-text);
+  background: var(--cc-text);
+}
+
+.pdp-option-button.is-active .pdp-option-radio::after {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #1a1714;
 }
 
 .pdp-option-thumb-wrap {
@@ -5959,6 +5988,7 @@ main > section:nth-of-type(even) {
   border-radius: 4px;
   object-fit: cover;
   opacity: 0.85;
+  cursor: zoom-in;
 }
 
 .pdp-option-button.is-active .pdp-option-thumb {
@@ -6941,6 +6971,12 @@ function closeCart() {
   panelBackdrop.classList.remove("is-visible");
   document.body.style.overflow = "";
 }
+window.addEventListener('pageshow', function() {
+  if (sessionStorage.getItem('cc_reopen_cart')) {
+    sessionStorage.removeItem('cc_reopen_cart');
+    openCart();
+  }
+});
 
 // Open — bind directly to each header icon button
 document.querySelector('a[href="#search"]')?.addEventListener("click", (e) => {
@@ -8680,11 +8716,12 @@ document.addEventListener("visibilitychange", () => {
                     data-option-multiple="${option.multiple ? "true" : "false"}"
                     data-comment="pdp-option-btn-${idx + 1}-${ci + 1}"
                   >
+                    <span class="pdp-option-radio" aria-hidden="true"></span>
                     <span class="pdp-option-thumb-wrap">
-                      <img class="pdp-option-thumb" src="https://picsum.photos/seed/${idx * 20 + ci + 1}/56/56" alt="" aria-hidden="true" data-comment="pdp-option-thumb-${idx + 1}-${ci + 1}" />
-                      <button class="pdp-thumb-expand" type="button" aria-label="View image" data-lightbox-src="https://picsum.photos/seed/${idx * 20 + ci + 1}/800/800" data-comment="pdp-thumb-expand-${idx + 1}-${ci + 1}">
+                      <img class="pdp-option-thumb" src="https://picsum.photos/seed/${idx * 20 + ci + 1}/56/56" alt="" aria-hidden="true" data-lightbox-src="https://picsum.photos/seed/${idx * 20 + ci + 1}/800/800" data-comment="pdp-option-thumb-${idx + 1}-${ci + 1}" />
+                      <span class="pdp-thumb-expand" role="button" tabindex="0" aria-label="View image" data-lightbox-src="https://picsum.photos/seed/${idx * 20 + ci + 1}/800/800" data-comment="pdp-thumb-expand-${idx + 1}-${ci + 1}">
                         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
-                      </button>
+                      </span>
                     </span>
                     <span class="pdp-option-label">${escapeHtml(choice.label)}</span>
                     ${choice.priceDelta ? `<span class="pdp-option-meta">+${fmtPrice(choice.priceDelta)}</span>` : ""}
@@ -9016,10 +9053,14 @@ document.addEventListener("visibilitychange", () => {
 
     optionsWrap.addEventListener("click", (e) => {
       const expandBtn = e.target.closest(".pdp-thumb-expand");
-      if (!expandBtn) return;
+      const thumb = e.target.closest(".pdp-option-thumb");
+      const trigger = expandBtn || thumb;
+      if (!trigger) return;
       e.stopPropagation();
       e.preventDefault();
-      openLightbox(expandBtn.dataset.lightboxSrc);
+      const src = trigger.dataset.lightboxSrc
+        || trigger.closest(".pdp-option-thumb-wrap")?.querySelector(".pdp-thumb-expand")?.dataset.lightboxSrc;
+      if (src) openLightbox(src);
     }, true);
   }
 
