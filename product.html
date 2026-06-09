@@ -6289,18 +6289,12 @@ main > section:nth-of-type(even) {
   margin-bottom: 24px;
 }
 
-.pdp-collection-grid,
 .pdp-related-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
 }
 
-.pdp-related-grid {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-}
-
-.pdp-collection-card,
 .pdp-related-card {
   --frame-cut-size: 26px;
   --frame-border-width: 1px;
@@ -6314,13 +6308,11 @@ main > section:nth-of-type(even) {
   transition: transform 220ms ease, background-color 220ms ease;
 }
 
-.pdp-collection-card:hover,
 .pdp-related-card:hover {
   transform: translateY(-4px);
   --frame-border: rgba(224, 123, 26, 0.42);
 }
 
-.pdp-collection-card-inner,
 .pdp-related-card-inner {
   display: flex;
   flex-direction: column;
@@ -6335,14 +6327,13 @@ main > section:nth-of-type(even) {
   background: #332d28;
 }
 
-.pdp-collection-media,
 .pdp-related-media {
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 182px;
-  margin: 18px 18px 0;
-  padding: 16px;
+  min-height: 148px;
+  margin: 16px 16px 0;
+  padding: 14px;
   border: 1px solid rgba(237, 232, 225, 0.08);
   border-radius: 8px;
   background:
@@ -6350,13 +6341,6 @@ main > section:nth-of-type(even) {
     #2f2b28;
 }
 
-.pdp-related-media {
-  min-height: 148px;
-  margin: 16px 16px 0;
-  padding: 14px;
-}
-
-.pdp-collection-media img,
 .pdp-related-media img {
   width: 100%;
   height: 100%;
@@ -6364,78 +6348,139 @@ main > section:nth-of-type(even) {
   object-position: center;
 }
 
-.pdp-collection-body,
 .pdp-related-body {
   display: grid;
   align-content: start;
-  gap: 10px;
-  padding: 18px 18px 18px;
-}
-
-.pdp-related-body {
   gap: 8px;
   padding: 14px 16px 16px;
 }
 
-.pdp-card-kicker {
-  margin: 0;
-  color: var(--cc-orange);
-  font-size: 0.8rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.pdp-card-title {
-  margin: 0;
-  max-width: none;
-  font-size: clamp(1.34rem, 1.6vw, 1.7rem);
-  line-height: 1;
-}
-
-.pdp-card-description {
-  margin: 0;
-  color: rgba(237, 232, 225, 0.66);
-  font-size: 0.92rem;
-  line-height: 1.5;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
+/* Accessories list */
+.acc-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(237, 232, 225, 0.1);
+  border-radius: 8px;
   overflow: hidden;
 }
 
-.pdp-card-price {
+.acc-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 14px 18px;
+  border-bottom: 1px solid rgba(237, 232, 225, 0.08);
+  background: #2a2520;
+  transition: background 180ms ease;
+}
+
+.acc-row:last-child {
+  border-bottom: none;
+}
+
+.acc-row:hover {
+  background: #2f2b28;
+}
+
+.acc-thumb {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  border-radius: 6px;
+  overflow: hidden;
+  background: #332d28;
+  border: 1px solid rgba(237, 232, 225, 0.08);
+}
+
+.acc-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
+}
+
+.acc-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.acc-id {
+  margin: 0 0 4px;
+  color: rgba(237, 232, 225, 0.45);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+}
+
+.acc-name {
   margin: 0;
+  max-width: none;
+  font-size: 0.95rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.acc-controls {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-shrink: 0;
+}
+
+.acc-qty {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(237, 232, 225, 0.18);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.acc-qty-btn {
+  width: 32px;
+  height: 36px;
+  background: transparent;
   color: var(--cc-text);
+  font-size: 1.1rem;
+  border: none;
+  cursor: pointer;
+  transition: background 140ms ease;
+}
+
+.acc-qty-btn:hover {
+  background: rgba(237, 232, 225, 0.08);
+}
+
+.acc-qty-val {
+  min-width: 28px;
+  text-align: center;
+  font-size: 0.9rem;
+  border-inline: 1px solid rgba(237, 232, 225, 0.18);
+  padding: 0 4px;
+  line-height: 36px;
+  height: 36px;
+}
+
+.acc-price {
+  margin: 0;
   font-family: "Barlow Condensed", sans-serif;
   font-style: italic;
   font-weight: 800;
-  font-size: clamp(1.55rem, 1.9vw, 2rem);
-  line-height: 0.96;
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--cc-text);
+  white-space: nowrap;
 }
 
-.pdp-card-chip {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: fit-content;
-  min-height: 24px;
-  padding: 0 9px;
-  border: 1px solid rgba(224, 123, 26, 0.42);
-  border-radius: 999px;
-  color: var(--cc-orange);
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+.acc-per {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: rgba(237, 232, 225, 0.5);
 }
 
-.pdp-card-action {
-  width: 100%;
-  min-height: 48px;
-  margin-top: 2px;
-  padding-inline: 16px;
-  font-size: 0.88rem;
+.acc-add {
+  white-space: nowrap;
+  font-size: 0.82rem;
+  padding-inline: 14px;
+  min-height: 36px;
 }
 
 @media (max-width: 1100px) {
@@ -6456,7 +6501,6 @@ main > section:nth-of-type(even) {
     overflow-x: auto;
   }
 
-  .pdp-collection-grid,
   .pdp-related-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -6494,21 +6538,29 @@ main > section:nth-of-type(even) {
     margin-top: 72px;
   }
 
-  .pdp-collection-grid,
   .pdp-related-grid {
     grid-template-columns: 1fr;
   }
 
-  .pdp-collection-media,
   .pdp-related-media {
     min-height: 200px;
     margin: 20px 20px 0;
     padding: 18px;
   }
 
-  .pdp-collection-body,
   .pdp-related-body {
     padding: 20px;
+  }
+
+  .acc-row {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .acc-controls {
+    flex-wrap: wrap;
+    width: 100%;
+    gap: 12px;
   }
 
   .container {
@@ -8696,23 +8748,28 @@ document.addEventListener("visibilitychange", () => {
 
     if (compatibleAccessories.length) {
       compatibleSection.hidden = false;
+      compatibleGrid.className = "acc-list";
       compatibleGrid.innerHTML = compatibleAccessories
         .map(
           (item) => `
-            <article class="pdp-collection-card">
-              <div class="pdp-collection-card-inner">
-                <div class="pdp-collection-media">
-                  <img src="${item.image}" alt="${escapeHtml(item.name)}" loading="lazy" />
+            <article class="acc-row" data-acc-id="${item.id}">
+              <div class="acc-thumb">
+                <img src="${item.image}" alt="${escapeHtml(item.name)}" loading="lazy" />
+              </div>
+              <div class="acc-info">
+                <p class="acc-id">Product ID: ${escapeHtml(item.id)}</p>
+                <h3 class="acc-name">${escapeHtml(item.name)}</h3>
+              </div>
+              <div class="acc-controls">
+                <div class="acc-qty">
+                  <button class="acc-qty-btn" type="button" data-acc-dec aria-label="Decrease quantity">−</button>
+                  <span class="acc-qty-val">1</span>
+                  <button class="acc-qty-btn" type="button" data-acc-inc aria-label="Increase quantity">+</button>
                 </div>
-                <div class="pdp-collection-body">
-                  <h3 class="pdp-card-title">${escapeHtml(item.name)}</h3>
-                  <p class="pdp-card-description">${escapeHtml(truncateText(item.description, 72))}</p>
-                  <span class="pdp-card-chip">${escapeHtml(item.filter)}</span>
-                  <p class="pdp-card-price">${fmtPrice(item.price)}</p>
-                  <button class="button button-primary pdp-card-action" type="button" data-pdp-add-id="${item.id}">
-                    Add to Cart
-                  </button>
-                </div>
+                <p class="acc-price">${fmtPrice(item.price)} <span class="acc-per">/ EA</span></p>
+                <button class="button button-primary acc-add" type="button" data-pdp-add-id="${item.id}">
+                  Add to Cart
+                </button>
               </div>
             </article>
           `
@@ -8890,20 +8947,35 @@ document.addEventListener("visibilitychange", () => {
     });
 
     compatibleGrid?.addEventListener("click", (event) => {
-      const button = event.target.closest("[data-pdp-add-id]");
-      if (!button) return;
+      const dec = event.target.closest("[data-acc-dec]");
+      const inc = event.target.closest("[data-acc-inc]");
+      const addBtn = event.target.closest("[data-pdp-add-id]");
 
-      const accessory = catalog.findProduct(button.dataset.pdpAddId);
-      if (!accessory) return;
+      if (dec || inc) {
+        const row = event.target.closest(".acc-row");
+        const valEl = row?.querySelector(".acc-qty-val");
+        if (!valEl) return;
+        let qty = parseInt(valEl.textContent, 10) || 1;
+        qty = Math.max(1, qty + (inc ? 1 : -1));
+        valEl.textContent = qty;
+        return;
+      }
 
-      addToCart(accessory, 1, {}, accessory.price, {
-        productUrl: `./product.html?product=${encodeURIComponent(accessory.id)}`,
-        parentProductId: product.id,
-        parentProductName: product.name,
-        parentProductUrl: `./product.html?product=${encodeURIComponent(product.id)}`,
-        parentSelectionKey: serializeSelections(cloneSelections(selections)),
-      });
-      flashAddButton(button);
+      if (addBtn) {
+        const row = addBtn.closest(".acc-row");
+        const valEl = row?.querySelector(".acc-qty-val");
+        const qty = parseInt(valEl?.textContent, 10) || 1;
+        const accessory = catalog.findProduct(addBtn.dataset.pdpAddId);
+        if (!accessory) return;
+        addToCart(accessory, qty, {}, accessory.price, {
+          productUrl: `./product.html?product=${encodeURIComponent(accessory.id)}`,
+          parentProductId: product.id,
+          parentProductName: product.name,
+          parentProductUrl: `./product.html?product=${encodeURIComponent(product.id)}`,
+          parentSelectionKey: serializeSelections(cloneSelections(selections)),
+        });
+        flashAddButton(addBtn);
+      }
     });
 
     // Lightbox
