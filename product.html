@@ -8402,7 +8402,6 @@ document.addEventListener("visibilitychange", () => {
               <a class="catalog-card-hit" href="./product.html?product=${encodeURIComponent(product.id)}">
                 <div class="catalog-card-media">
                   <div class="catalog-card-overlays">
-                    <p class="catalog-card-type">${product.cardType}</p>
                   </div>
                   <img src="${product.image}" alt="${product.name}" loading="lazy" />
                 </div>
@@ -8740,7 +8739,6 @@ document.addEventListener("visibilitychange", () => {
               <a class="catalog-card-hit" href="./product.html?product=${encodeURIComponent(item.id)}">
                 <div class="catalog-card-media">
                   <div class="catalog-card-overlays">
-                    <p class="catalog-card-type">${escapeHtml(item.cardType)}</p>
                     ${item.badge ? `<p class="catalog-card-badge ${badgeClass(item.badge)}">${escapeHtml(item.badge)}</p>` : ""}
                   </div>
                   <img src="${item.image}" alt="${escapeHtml(item.name)}" loading="lazy" />
