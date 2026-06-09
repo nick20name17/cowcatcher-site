@@ -5544,11 +5544,19 @@ main > section:nth-of-type(even) {
   padding: 22px 24px 24px;
 }
 
-.catalog-card-type {
+.catalog-card-overlays {
   position: absolute;
   top: 10px;
   left: 10px;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 5px;
+}
+
+.catalog-card-type {
+  position: static;
   margin: 0;
   padding: 4px 9px;
   border-radius: 999px;
@@ -5600,10 +5608,7 @@ main > section:nth-of-type(even) {
 }
 
 .catalog-card-badge {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  z-index: 2;
+  position: static;
   margin: 0;
   padding: 3px 8px;
   border-radius: 999px;
@@ -8396,7 +8401,9 @@ document.addEventListener("visibilitychange", () => {
               </button>
               <a class="catalog-card-hit" href="./product.html?product=${encodeURIComponent(product.id)}">
                 <div class="catalog-card-media">
-                  <p class="catalog-card-type">${product.cardType}</p>
+                  <div class="catalog-card-overlays">
+                    <p class="catalog-card-type">${product.cardType}</p>
+                  </div>
                   <img src="${product.image}" alt="${product.name}" loading="lazy" />
                 </div>
                 <div class="catalog-card-body">
@@ -8732,8 +8739,10 @@ document.addEventListener("visibilitychange", () => {
               </button>
               <a class="catalog-card-hit" href="./product.html?product=${encodeURIComponent(item.id)}">
                 <div class="catalog-card-media">
-                  <p class="catalog-card-type">${escapeHtml(item.cardType)}</p>
-                  ${item.badge ? `<p class="catalog-card-badge ${badgeClass(item.badge)}">${escapeHtml(item.badge)}</p>` : ""}
+                  <div class="catalog-card-overlays">
+                    <p class="catalog-card-type">${escapeHtml(item.cardType)}</p>
+                    ${item.badge ? `<p class="catalog-card-badge ${badgeClass(item.badge)}">${escapeHtml(item.badge)}</p>` : ""}
+                  </div>
                   <img src="${item.image}" alt="${escapeHtml(item.name)}" loading="lazy" />
                 </div>
                 <div class="catalog-card-body">
